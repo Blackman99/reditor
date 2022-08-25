@@ -3,6 +3,7 @@ import { resumeMatchedI18n } from '../../i18n'
 import HeaderInfo from './HeaderInfo.vue'
 import SectionTitle from './SectionTitle.vue'
 import List from './List.vue'
+import TimelineList from './TimelineList.vue'
 </script>
 <template>
   <div
@@ -28,65 +29,44 @@ import List from './List.vue'
         <div i-uis-briefcase></div>
       </template>
     </SectionTitle>
-    <ul class="experience-list">
-      <li
-        v-for="{
-          companyName,
-          jobTitle,
-          start,
-          end,
-          responsibilities,
-          achievements,
-        } in resumeMatchedI18n.workingExperiences"
-        :key="companyName"
-        class="experience-item"
-      >
-        <div
-          flex
-          justify-between
-          items-center
-        >
-          <div
-            flex
-            items-center
-          >
-            <div font-bold>{{ companyName }}</div>
-
-            <div
-              ml-4
-              text-gray-6
-            >
-              {{ jobTitle }}
-            </div>
-          </div>
-          <div
-            text-gray-4
-            text-3
-          >
-            {{ start }} - {{ end }}
-          </div>
-        </div>
-        <div
-          mt-4
-          mb-2
-        >
-          {{ resumeMatchedI18n.responsibilitiesTitle }}
-        </div>
-        <List :items="responsibilities" />
-        <div
-          mt-4
-          mb-2
-        >
-          {{ resumeMatchedI18n.achievementsTitle }}
-        </div>
-        <List :items="achievements" />
-      </li>
-    </ul>
+    <TimelineList
+      :items="
+        resumeMatchedI18n.workingExperiences.map(wo => ({
+          title: wo.companyName,
+          subtitle: wo.jobTitle,
+          append: `${wo.start} - ${wo.end}`,
+          contents: [
+            {
+              title: resumeMatchedI18n.responsibilitiesTitle,
+              items: wo.responsibilities,
+            },
+            {
+              title: resumeMatchedI18n.achievementsTitle,
+              items: wo.achievements,
+            },
+          ],
+        }))
+      "
+    />
     <SectionTitle :title="resumeMatchedI18n.educationExperienceTitle">
       <template #icon>
         <div i-zondicons-education></div>
       </template>
     </SectionTitle>
+    <TimelineList
+      :items="
+        resumeMatchedI18n.educationExperiences.map(edu => ({
+          title: edu.institutionName,
+          subtitle: edu.major,
+          append: `${edu.start} - ${edu.end}`,
+          contents: [
+            {
+              items: edu.achievements,
+            },
+          ],
+        }))
+      "
+    />
     <!-- Gallery -->
     <SectionTitle :title="resumeMatchedI18n.galleryTitle">
       <template #icon>
