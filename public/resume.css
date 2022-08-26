@@ -32,3 +32,7 @@
    width: 1px;
    background-color: rgba(191, 219, 254, 1);
  }
+
+ svg {
+  vertical-align: middle;
+ }

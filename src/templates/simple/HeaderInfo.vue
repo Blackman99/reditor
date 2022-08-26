@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 import { resumeMatchedI18n } from '../../i18n'
+import Gender from './icons/Gender.vue'
+import Birthday from './icons/Birthday.vue'
+import Location from './icons/Location.vue'
+import Phone from './icons/Phone.vue'
+import Email from './icons/Email.vue'
 </script>
 <template>
   <div
@@ -27,10 +32,10 @@ import { resumeMatchedI18n } from '../../i18n'
         items-center
         px-4
       >
-        <div
-          i-simple-line-icons-symbol-male
+        <Gender
+          text-6
           mr-1
-        ></div>
+        />
         {{ resumeMatchedI18n.profile.gender }}
       </div>
       <div
@@ -43,10 +48,10 @@ import { resumeMatchedI18n } from '../../i18n'
         items-center
         px-4
       >
-        <div
-          i-fe-birthday-cake
+        <Birthday
+          text-6
           mr-1
-        ></div>
+        />
         {{ resumeMatchedI18n.profile.birthday }}
       </div>
       <div
@@ -59,10 +64,10 @@ import { resumeMatchedI18n } from '../../i18n'
         items-center
         px-4
       >
-        <div
-          i-ic-baseline-location-on
+        <Location
+          text-6
           mr-1
-        ></div>
+        />
         {{ resumeMatchedI18n.profile.location }}
       </div>
       <div
@@ -75,10 +80,10 @@ import { resumeMatchedI18n } from '../../i18n'
         items-center
         px-4
       >
-        <div
-          i-ic-round-phone
+        <Phone
+          text-6
           mr-1
-        ></div>
+        />
         {{ resumeMatchedI18n.profile.phone }}
       </div>
       <div
@@ -91,10 +96,10 @@ import { resumeMatchedI18n } from '../../i18n'
         items-center
         px-4
       >
-        <div
-          i-mdi-email-outline
+        <Email
+          text-6
           mr-1
-        ></div>
+        />
         {{ resumeMatchedI18n.profile.email }}
       </div>
     </div>

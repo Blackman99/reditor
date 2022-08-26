@@ -74,7 +74,7 @@ const resume: Resume = {
     responsibilitiesTitle: 'Responsibilities',
     achievementsTitle: 'Achievements',
     galleryTitle: 'Gallery',
-    footer: 'I would be happy to work with you',
+    footer: 'Looking forward to working with you',
     galleryItems: [
       'Personal blog: https://blog.donsen.site/',
       'Open source ui components lib: https://github.com/Blackman99/casual-ui',

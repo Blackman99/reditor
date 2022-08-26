@@ -16,7 +16,8 @@ defineProps<{
       <slot name="icon" />
     </div>
     <div
-      mx-4
+      ml-2
+      mr-4
       font-bold
       text-5
     >

@@ -4,6 +4,11 @@ import HeaderInfo from './HeaderInfo.vue'
 import SectionTitle from './SectionTitle.vue'
 import List from './List.vue'
 import TimelineList from './TimelineList.vue'
+import Person from './icons/Person.vue'
+import Briefcase from './icons/Briefcase.vue'
+import Education from './icons/Education.vue'
+import Gallery from './icons/Gallery.vue'
+import Smile from './icons/Smile.vue'
 </script>
 <template>
   <div
@@ -11,6 +16,7 @@ import TimelineList from './TimelineList.vue'
     max-w-4xl
     font-sans
     id="resume-container"
+    p-4
   >
     <HeaderInfo />
     <!-- Personal Advantages -->
@@ -19,14 +25,14 @@ import TimelineList from './TimelineList.vue'
       mt-8
     >
       <template #icon>
-        <div i-material-symbols-person></div>
+        <Person />
       </template>
     </SectionTitle>
     <List :items="resumeMatchedI18n.personalAdvantages" />
     <!-- Working Experiences -->
     <SectionTitle :title="resumeMatchedI18n.workingExperiencesTitle">
       <template #icon>
-        <div i-uis-briefcase></div>
+        <Briefcase />
       </template>
     </SectionTitle>
     <TimelineList
@@ -50,7 +56,7 @@ import TimelineList from './TimelineList.vue'
     />
     <SectionTitle :title="resumeMatchedI18n.educationExperienceTitle">
       <template #icon>
-        <div i-zondicons-education></div>
+        <Education />
       </template>
     </SectionTitle>
     <TimelineList
@@ -70,7 +76,7 @@ import TimelineList from './TimelineList.vue'
     <!-- Gallery -->
     <SectionTitle :title="resumeMatchedI18n.galleryTitle">
       <template #icon>
-        <div i-dashicons-format-gallery></div>
+        <Gallery />
       </template>
     </SectionTitle>
     <List :items="resumeMatchedI18n.galleryItems" />
@@ -82,11 +88,11 @@ import TimelineList from './TimelineList.vue'
       text-gray-4
     >
       {{ resumeMatchedI18n.footer }}
-      <div
-        i-fa6-regular-face-smile-wink
-        ml-2
+
+      <Smile
+        ml-1
         text-6
-      ></div>
+      />
     </div>
   </div>
 </template>
