@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { resumeMatchedI18n } from '../../i18n'
-import Gender from '@/icons/Gender.vue'
-import Birthday from '@/icons/Birthday.vue'
-import Location from '@/icons/Location.vue'
-import Phone from '@/icons/Phone.vue'
-import Email from '@/icons/Email.vue'
+import Gender from './icons/Gender.vue'
+import Birthday from './icons/Birthday.vue'
+import Location from './icons/Location.vue'
+import Phone from './icons/Phone.vue'
+import Email from './icons/Email.vue'
 </script>
 <template>
   <div

@@ -6,10 +6,7 @@ import { locale } from './i18n'
 
 import App from './App.vue'
 
-const routes = [
-  { path: '/', component: SimpleTemplate },
-  { path: '/zh-CN/', component: SimpleTemplate },
-]
+const routes = [{ path: '/:pathMatch(.*)*', component: SimpleTemplate }]
 
 const router = createRouter({
   routes,
