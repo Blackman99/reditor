@@ -56,3 +56,35 @@ defineProps<{
     </li>
   </ul>
 </template>
+<style scoped>
+.experience-list {
+  list-style: none;
+}
+
+.experience-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.experience-item::before {
+  content: ' ';
+  position: absolute;
+  left: -20px;
+  top: 12px;
+  transform: translateY(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #60a5fa;
+}
+
+.experience-item::after {
+  content: ' ';
+  position: absolute;
+  top: 16px;
+  left: -16px;
+  bottom: -12px;
+  width: 1px;
+  background-color: rgba(191, 219, 254, 1);
+}
+</style>

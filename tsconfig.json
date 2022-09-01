@@ -2,7 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@/**/*": ["./src/**/*"]
+      "@/*": ["./src/*"]
     },
     "typeRoots": ["./nodule_modules/@types", "./types"],
   }

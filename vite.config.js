@@ -16,7 +16,26 @@ export default defineConfig({
   plugins: [
     vue(),
     Unocss({
-      rules: [[/^bg-([0-9A-Fa-f]{6})/, ([_, d]) => `background-color: #${d};`]],
+      rules: [
+        [
+          /^bg-([\w\d]{6})$/,
+          ([_, d]) => ({
+            'background-color': `#${d}`,
+          }),
+        ],
+        [
+          /^b-([\w\d]{6})$/,
+          ([_, d]) => ({
+            'border-color': `#${d}`,
+          }),
+        ],
+        [
+          /^t-([\w\d]{6})$/,
+          ([_, d]) => ({
+            color: `#${d}`,
+          }),
+        ],
+      ],
       presets: [presetAttributify(), presetUno(), presetIcons()],
     }),
   ],

@@ -24,6 +24,7 @@ async function downloadPDF() {
     >
       {{ path }}
     </router-link>
+
     <button @click="downloadPDF">Download PDF</button>
   </div>
 </template>

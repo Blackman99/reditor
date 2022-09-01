@@ -15,7 +15,6 @@ import Smile from '@/icons/Smile.vue'
     mx-auto
     max-w-4xl
     font-sans
-    id="resume-container"
     p-4
   >
     <HeaderInfo />

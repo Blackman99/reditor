@@ -1,12 +1,13 @@
 import 'uno.css'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import SimpleTemplate from './templates/simple/index.vue'
+import Page from './templates/index.vue'
 import { locale } from './i18n'
-
+import Green from './templates/green/index.vue'
+import Simple from './templates/simple/index.vue'
 import App from './App.vue'
 
-const routes = [{ path: '/:pathMatch(.*)*', component: SimpleTemplate }]
+const routes = [{ path: '/:pathMatch(.*)*', component: Page }]
 
 const router = createRouter({
   routes,
@@ -18,7 +19,15 @@ router.beforeEach(to => {
   if (paths.length < 2) {
     return
   }
+  ;``
   locale.value = (paths[1] || '/') as I18n
 })
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+
+app.use(router)
+
+app.component('Simple', Simple)
+app.component('Green', Green)
+
+app.mount('#app')

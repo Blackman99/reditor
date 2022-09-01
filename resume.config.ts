@@ -139,8 +139,8 @@ const resume: Resume = {
       {
         companyName: '亚信科技（中国）有限公司',
         jobTitle: '前端开发工程师',
-        start: '9 2019',
-        end: '8 2021',
+        start: '2019年9月',
+        end: '2021年8月',
         responsibilities: [
           '项目技术栈选型、搭建、部分业务功能开发',
           '项目的持续集成和持续交付部署',
@@ -154,8 +154,8 @@ const resume: Resume = {
       {
         companyName: '北京优锘科技',
         jobTitle: '前端开发工程师',
-        start: '10 2017',
-        end: '9 2019',
+        start: '2017年10月',
+        end: '2019年9月',
         responsibilities: [
           '项目技术栈选型、搭建、部分业务功能开发',
           '根据设计图纸开发还原度高的页面',
