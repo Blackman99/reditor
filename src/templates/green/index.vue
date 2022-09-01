@@ -4,11 +4,7 @@ import Header from './Header.vue'
 import Section from './Section.vue'
 </script>
 <template>
-  <div
-    mx-auto
-    max-w-4xl
-    font-sans
-  >
+  <div>
     <Header />
     <div p-6>
       <Section :title="resumeMatchedI18n.personalAdvantageTitle">

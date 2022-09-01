@@ -92,8 +92,20 @@ const resume: Resume = {
         ],
       },
     ],
+    themeConfig: {
+      green: {
+        sectionTitleWidth: '160px',
+      },
+      simple: {},
+    },
   },
   'zh-CN': {
+    themeConfig: {
+      green: {
+        sectionTitleWidth: '100px',
+      },
+      simple: {},
+    },
     careerObjectiveTitle: '期望职位',
     profile: {
       name: '赵东升',

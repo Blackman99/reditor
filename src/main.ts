@@ -3,8 +3,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Page from './templates/index.vue'
 import { locale } from './i18n'
-import Green from './templates/green/index.vue'
-import Simple from './templates/simple/index.vue'
+
 import App from './App.vue'
 
 const routes = [{ path: '/:pathMatch(.*)*', component: Page }]
@@ -19,15 +18,20 @@ router.beforeEach(to => {
   if (paths.length < 2) {
     return
   }
-  ;``
   locale.value = (paths[1] || '/') as I18n
 })
 
 const app = createApp(App)
 
-app.use(router)
+const templates = import.meta.glob('./templates/*/index.vue', { eager: true })
 
-app.component('Simple', Simple)
-app.component('Green', Green)
+Object.entries(templates).forEach(([path, templateComponent]) => {
+  let name = path.split('/')[2]
+  name = name.slice(0, 1).toUpperCase() + name.slice(1)
+
+  app.component(name, (templateComponent as any).default)
+})
+
+app.use(router)
 
 app.mount('#app')

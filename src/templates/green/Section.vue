@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import { templateConfig } from '../store'
+
 defineProps<{
   title: string
 }>()
 </script>
 <template>
-  <div>
+  <div
+    :style="{
+      '--section-title-width': (templateConfig as GreenThemeConfig).sectionTitleWidth,
+    }"
+  >
     <div
       text-white
       class="title"
@@ -26,7 +32,11 @@ defineProps<{
 </template>
 <style scoped lang="scss">
 .title {
-  background: linear-gradient(75deg, #007b86 100px, transparent 100px);
+  background: linear-gradient(
+    75deg,
+    #007b86 var(--section-title-width),
+    transparent var(--section-title-width)
+  );
 }
 .content {
   border-color: rgba(0, 123, 134, 0.5);

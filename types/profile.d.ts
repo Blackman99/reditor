@@ -1,3 +1,8 @@
+type I18n = '/' | 'zh-CN'
+type ThemeConfigBase<T> = {
+  [key in I18n]: T
+}
+type Templates = 'simple' | 'green'
 interface Profile {
   name: string
   careerObjective: string
@@ -8,7 +13,9 @@ interface Profile {
   email: string
 }
 
-type I18n = '/' | 'zh-CN'
+interface GreenThemeConfig {
+  sectionTitleWidth: string
+}
 
 interface ResumeItem {
   careerObjectiveTitle: string
@@ -24,6 +31,10 @@ interface ResumeItem {
   galleryItems: string[]
   educationExperiences: EducationExperience[]
   educationExperienceTitle: string
+  themeConfig: {
+    green: GreenThemeConfig
+    simple: any
+  }
 }
 
 interface WorkingExperience {

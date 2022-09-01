@@ -11,12 +11,7 @@ import Gallery from '@/icons/Gallery.vue'
 import Smile from '@/icons/Smile.vue'
 </script>
 <template>
-  <div
-    mx-auto
-    max-w-4xl
-    font-sans
-    p-4
-  >
+  <div p-4>
     <HeaderInfo />
     <!-- Personal Advantages -->
     <SectionTitle
