@@ -22,22 +22,52 @@ async function downloadPDF() {
     flex-col
     gap-4
   >
-    <div>
-      <b>Select I18n </b>
-    </div>
-    <router-link
-      v-for="path in Object.keys(resumeConfig)"
-      :key="path"
-      :to="path"
+    <div
+      flex
+      items-center
+      font-bold
     >
-      {{ path }}
-    </router-link>
-
-    <div>
-      <b> Select Templates </b>
+      <div
+        text-6
+        i-ion-language
+      ></div>
+      <div ml-2>Language</div>
+    </div>
+    <div
+      flex
+      flex-col
+      gap-2
+      pl-4
+    >
+      <router-link
+        v-for="path in Object.keys(resumeConfig)"
+        :key="path"
+        :to="path"
+        active-class="bg-blue text-white"
+        class="leading-8 px-2 hover:bg-gray-2 active:bg-gray-4"
+      >
+        {{ path }}
+      </router-link>
     </div>
 
-    <div>
+    <div
+      flex
+      mt-4
+      items-center
+      font-bold
+    >
+      <div
+        text-6
+        i-gridicons-themes
+      ></div>
+      <div ml-2>Themes</div>
+    </div>
+    <div
+      pl-4
+      flex
+      flex-col
+      gap-2
+    >
       <div
         cursor-pointer
         leading-8
@@ -48,7 +78,8 @@ async function downloadPDF() {
           {
             'hover:bg-gray-2': templateName !== tName,
             'active:bg-gray-4': templateName !== tName,
-            'bg-blue-3': templateName === tName,
+            'bg-blue': templateName === tName,
+            'text-white': templateName === tName,
           },
         ]"
         @click="templateName = tName"
@@ -56,7 +87,32 @@ async function downloadPDF() {
         {{ tName }}
       </div>
     </div>
-
-    <button @click="downloadPDF">Download PDF</button>
+  </div>
+  <div
+    fixed
+    bottom-4
+    right-4
+  >
+    <button
+      @click="downloadPDF"
+      inline-flex
+      items-center
+      leading-10
+      bg-blue
+      outline-0
+      border-0
+      text-white
+      px-4
+      rounded-2
+      hover:bg-blue-5
+      active:bg-blue-6
+      cursor-pointer
+    >
+      <div
+        i-fontisto-export
+        text-5
+      ></div>
+      <div ml-2>Download PDF</div>
+    </button>
   </div>
 </template>
