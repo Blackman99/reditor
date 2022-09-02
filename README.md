@@ -2,5 +2,8 @@
 
 ### Features
 
-* I18n
-* Custom Templates
+- I18n
+- Templates Switcher
+- Export PDF
+
+[Online Demos](https://resume-helper.netlify.app/)
