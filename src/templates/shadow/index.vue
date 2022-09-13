@@ -18,7 +18,7 @@ import Section from './Section.vue'
         </ul>
       </Section>
       <Section
-        mt-8
+        mt-6
         :title="resumeMatchedI18n.workingExperiencesTitle"
       >
         <div pl-10>
@@ -78,10 +78,7 @@ import Section from './Section.vue'
           </div>
         </div>
       </Section>
-      <Section
-        :title="resumeMatchedI18n.educationExperienceTitle"
-        mt-8
-      >
+      <Section :title="resumeMatchedI18n.educationExperienceTitle">
         <div pl-10>
           <div
             v-for="edu in resumeMatchedI18n.educationExperiences"
@@ -118,10 +115,7 @@ import Section from './Section.vue'
           </div>
         </div>
       </Section>
-      <Section
-        :title="resumeMatchedI18n.galleryTitle"
-        mt-8
-      >
+      <Section :title="resumeMatchedI18n.galleryTitle">
         <ul m-0>
           <li
             v-for="ga in resumeMatchedI18n.galleryItems"

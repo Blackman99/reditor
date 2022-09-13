@@ -17,6 +17,10 @@ interface GreenThemeConfig {
   sectionTitleWidth: string
 }
 
+interface ShadowConfig {
+  sectionTitleWidth: string
+}
+
 interface ResumeItem {
   careerObjectiveTitle: string
   profile: Profile
@@ -33,7 +37,6 @@ interface ResumeItem {
   educationExperienceTitle: string
   themeConfig: {
     green: GreenThemeConfig
-    simple: any
   }
 }
 

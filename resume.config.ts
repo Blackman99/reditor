@@ -96,7 +96,6 @@ const resume: Resume = {
       green: {
         sectionTitleWidth: '160px',
       },
-      simple: {},
     },
   },
   'zh-CN': {
@@ -104,7 +103,6 @@ const resume: Resume = {
       green: {
         sectionTitleWidth: '100px',
       },
-      simple: {},
     },
     careerObjectiveTitle: '期望职位',
     profile: {
