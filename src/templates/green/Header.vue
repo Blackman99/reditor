@@ -5,6 +5,7 @@ import Birthday from '@/icons/Birthday.vue'
 import Location from '@/icons/Location.vue'
 import Phone from '@/icons/Phone.vue'
 import Email from '@/icons/Email.vue'
+import Divider from './Divider.vue'
 </script>
 <template>
   <div
@@ -42,11 +43,7 @@ import Email from '@/icons/Email.vue'
           />
           {{ resumeMatchedI18n.profile.gender }}
         </div>
-        <div
-          h-3
-          border-r-1
-          border-gray-3
-        ></div>
+        <Divider />
         <div
           flex
           items-center
@@ -58,11 +55,7 @@ import Email from '@/icons/Email.vue'
           />
           {{ resumeMatchedI18n.profile.birthday }}
         </div>
-        <div
-          h-3
-          border-r-1
-          border-gray-3
-        ></div>
+        <Divider />
         <div
           flex
           items-center
@@ -74,11 +67,7 @@ import Email from '@/icons/Email.vue'
           />
           {{ resumeMatchedI18n.profile.location }}
         </div>
-        <div
-          h-3
-          border-r-1
-          border-gray-3
-        ></div>
+        <Divider />
         <div
           flex
           items-center
@@ -90,11 +79,7 @@ import Email from '@/icons/Email.vue'
           />
           {{ resumeMatchedI18n.profile.phone }}
         </div>
-        <div
-          h-3
-          border-r-1
-          border-gray-3
-        ></div>
+        <Divider />
         <div
           flex
           items-center
