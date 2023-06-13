@@ -1,4 +1,5 @@
-# A collection of charged resume templates that I encountered
+## Introduction
+Make charged the resume templates that I encountered become free
 
 ### Features
 
