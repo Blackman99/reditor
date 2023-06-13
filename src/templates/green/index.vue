@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { resumeMatchedI18n } from '@/i18n'
 import Header from './Header.vue'
 import Section from './Section.vue'
+import { resumeMatchedI18n, updateResponsibility } from '@/store'
 </script>
+
 <template>
   <div>
     <Header />
@@ -23,8 +24,8 @@ import Section from './Section.vue'
       >
         <div pl-10>
           <div
-            v-for="wo in resumeMatchedI18n.workingExperiences"
-            :key="wo.companyName"
+            v-for="wo, wIdx in resumeMatchedI18n.workingExperiences"
+            :key="wIdx"
             mb-4
           >
             <div
@@ -53,10 +54,14 @@ import Section from './Section.vue'
               list-decimal
             >
               <li
-                v-for="re in wo.responsibilities"
-                :key="re"
+                v-for="re, reIdx in wo.responsibilities"
+                :key="reIdx"
               >
-                {{ re }}
+                <editable-span
+                  :model-value="re" @update:model-value="(newRe: string) => {
+                    updateResponsibility(wIdx, reIdx, newRe)
+                  }"
+                />
               </li>
             </ul>
             <div>
@@ -69,8 +74,8 @@ import Section from './Section.vue'
               list-decimal
             >
               <li
-                v-for="ach in wo.achievements"
-                :key="ach"
+                v-for="ach, i in wo.achievements"
+                :key="i"
               >
                 {{ ach }}
               </li>

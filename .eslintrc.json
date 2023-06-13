@@ -1,0 +1,11 @@
+{
+  "extends": "@casual-ui/eslint-config-vue",
+  "overrides": [
+    {
+      "files": "*.vue",
+      "rules": {
+        "import/first": "off"
+      }
+    }
+  ]
+}

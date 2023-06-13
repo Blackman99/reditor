@@ -2,9 +2,9 @@ import 'uno.css'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Page from './templates/index.vue'
-import { locale } from './i18n'
-
+import EditableSpan from './components/EditableSpan.vue'
 import App from './App.vue'
+import { locale } from '@/store'
 
 const routes = [{ path: '/:pathMatch(.*)*', component: Page }]
 
@@ -13,11 +13,11 @@ const router = createRouter({
   history: createWebHistory(),
 })
 
-router.beforeEach(to => {
+router.beforeEach((to) => {
   const paths = to.fullPath.split('/')
-  if (paths.length < 2) {
+  if (paths.length < 2)
     return
-  }
+
   locale.value = (paths[1] || '/') as I18n
 })
 
@@ -33,5 +33,7 @@ Object.entries(templates).forEach(([path, templateComponent]) => {
 })
 
 app.use(router)
+
+app.component('EditableSpan', EditableSpan)
 
 app.mount('#app')

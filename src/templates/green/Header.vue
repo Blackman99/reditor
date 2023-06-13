@@ -1,23 +1,25 @@
 <script lang="ts" setup>
-import { resumeMatchedI18n } from '../../i18n'
+import Divider from './Divider.vue'
+import { birthday, careerObjective, email, gender, location, name, phone, resumeMatchedI18n } from '@/store'
 import Gender from '@/icons/Gender.vue'
 import Birthday from '@/icons/Birthday.vue'
 import Location from '@/icons/Location.vue'
 import Phone from '@/icons/Phone.vue'
 import Email from '@/icons/Email.vue'
-import Divider from './Divider.vue'
 </script>
+
 <template>
   <div
     bg-007b86
     text-white
     p-8
+    mx--4
   >
     <div
       text-8
       leading-16
     >
-      {{ resumeMatchedI18n.profile.name }}
+      <editable-span v-model="name" />
     </div>
     <div
       text-4
@@ -25,7 +27,7 @@ import Divider from './Divider.vue'
     >
       <div>
         {{ resumeMatchedI18n.careerObjectiveTitle }}:
-        {{ resumeMatchedI18n.profile.careerObjective }}
+        <editable-span v-model="careerObjective" />
       </div>
       <div
         flex
@@ -41,7 +43,7 @@ import Divider from './Divider.vue'
             text-6
             mr-1
           />
-          {{ resumeMatchedI18n.profile.gender }}
+          <editable-span v-model="gender" />
         </div>
         <Divider />
         <div
@@ -53,7 +55,7 @@ import Divider from './Divider.vue'
             text-6
             mr-1
           />
-          {{ resumeMatchedI18n.profile.birthday }}
+          <editable-span v-model="birthday" />
         </div>
         <Divider />
         <div
@@ -65,7 +67,7 @@ import Divider from './Divider.vue'
             text-6
             mr-1
           />
-          {{ resumeMatchedI18n.profile.location }}
+          <editable-span v-model="location" />
         </div>
         <Divider />
         <div
@@ -77,7 +79,7 @@ import Divider from './Divider.vue'
             text-6
             mr-1
           />
-          {{ resumeMatchedI18n.profile.phone }}
+          <editable-span v-model="phone" />
         </div>
         <Divider />
         <div
@@ -89,7 +91,7 @@ import Divider from './Divider.vue'
             text-6
             mr-1
           />
-          {{ resumeMatchedI18n.profile.email }}
+          <editable-span v-model="email" />
         </div>
       </div>
     </div>

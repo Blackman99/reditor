@@ -8,6 +8,7 @@ defineProps<{
   <div
     flex
     items-center
+    class="section-title"
   >
     <div
       text-blue-4
@@ -27,6 +28,6 @@ defineProps<{
       h-1px
       bg-blue-2
       flex-grow
-    ></div>
+    />
   </div>
 </template>

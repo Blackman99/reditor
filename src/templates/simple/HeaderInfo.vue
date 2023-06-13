@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { resumeMatchedI18n } from '../../i18n'
+import { resumeMatchedI18n } from '@/store'
 import Gender from '@/icons/Gender.vue'
 import Birthday from '@/icons/Birthday.vue'
 import Location from '@/icons/Location.vue'
 import Phone from '@/icons/Phone.vue'
 import Email from '@/icons/Email.vue'
 </script>
+
 <template>
   <div
     text-8
@@ -42,7 +43,7 @@ import Email from '@/icons/Email.vue'
         h-3
         border-r-1
         border-gray-3
-      ></div>
+      />
       <div
         flex
         items-center
@@ -58,7 +59,7 @@ import Email from '@/icons/Email.vue'
         h-3
         border-r-1
         border-gray-3
-      ></div>
+      />
       <div
         flex
         items-center
@@ -74,7 +75,7 @@ import Email from '@/icons/Email.vue'
         h-3
         border-r-1
         border-gray-3
-      ></div>
+      />
       <div
         flex
         items-center
@@ -90,7 +91,7 @@ import Email from '@/icons/Email.vue'
         h-3
         border-r-1
         border-gray-3
-      ></div>
+      />
       <div
         flex
         items-center
@@ -100,7 +101,9 @@ import Email from '@/icons/Email.vue'
           text-6
           mr-1
         />
-        {{ resumeMatchedI18n.profile.email }}
+        <editable-span>
+          {{ resumeMatchedI18n.profile.email }}
+        </editable-span>
       </div>
     </div>
   </div>

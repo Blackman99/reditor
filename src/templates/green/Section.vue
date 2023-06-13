@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { templateConfig } from '../store'
+import { templateConfig } from '@/store'
 
 defineProps<{
   title: string
 }>()
 </script>
+
 <template>
   <div
     :style="{
@@ -30,15 +31,25 @@ defineProps<{
     </div>
   </div>
 </template>
+
 <style scoped lang="scss">
 .title {
+  position: relative;
   background: linear-gradient(
     75deg,
     #007b86 var(--section-title-width),
     transparent var(--section-title-width)
   );
-}
-.content {
-  border-color: rgba(0, 123, 134, 0.5);
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    z-index: 3;
+    background-color: #fff;
+  }
 }
 </style>

@@ -1,10 +1,11 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
-import { presetAttributify, presetUno, presetIcons } from 'unocss'
+import { presetAttributify, presetIcons, presetUno } from 'unocss'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
 
 export default defineConfig({
+  base: '',
   server: {
     host: '0.0.0.0',
   },

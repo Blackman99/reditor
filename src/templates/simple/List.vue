@@ -3,6 +3,7 @@ defineProps<{
   items: string[]
 }>()
 </script>
+
 <template>
   <ul
     list-disc

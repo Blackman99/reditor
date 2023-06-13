@@ -1,17 +1,29 @@
 <script setup lang="ts">
-import { resumeMatchedI18n } from './i18n'
-import resumeConfig from '../resume.config'
-import { templateName } from './templates/store'
+import { resumeMatchedI18n, templateName } from '@/store'
+import resumeConfig from '@/store/resume'
 
 const templateNames = Object.keys(
-  import.meta.glob('./templates/*/index.vue', { eager: true })
+  import.meta.glob('./templates/*/index.vue', { eager: true }),
 ).map(path => path.split('/')[2]) as Array<Templates>
 
 async function downloadPDF() {
-  // @ts-ignore
-  window.html2pdf(document.getElementById('resume-container'))
+  window.scrollTo({
+    top: 0,
+  })
+  window
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    .html2pdf()
+    .set({
+      margin: 0,
+      image: {
+        type: 'png',
+        quality: 1,
+      },
+    }).from(document.getElementById('resume-container')).save('resume')
 }
 </script>
+
 <template>
   <router-view v-if="resumeMatchedI18n" />
   <div
@@ -30,8 +42,10 @@ async function downloadPDF() {
       <div
         text-6
         i-ion-language
-      ></div>
-      <div ml-2>Language</div>
+      />
+      <div ml-2>
+        Language
+      </div>
     </div>
     <div
       flex
@@ -59,8 +73,10 @@ async function downloadPDF() {
       <div
         text-6
         i-gridicons-themes
-      ></div>
-      <div ml-2>Themes</div>
+      />
+      <div ml-2>
+        Themes
+      </div>
     </div>
     <div
       pl-4
@@ -69,11 +85,11 @@ async function downloadPDF() {
       gap-2
     >
       <div
+        v-for="tName in templateNames"
+        :key="tName"
         cursor-pointer
         leading-8
         px-2
-        v-for="tName in templateNames"
-        :key="tName"
         :class="[
           {
             'hover:bg-gray-2': templateName !== tName,
@@ -94,7 +110,6 @@ async function downloadPDF() {
     right-4
   >
     <button
-      @click="downloadPDF"
       inline-flex
       items-center
       leading-10
@@ -107,12 +122,15 @@ async function downloadPDF() {
       hover:bg-blue-5
       active:bg-blue-6
       cursor-pointer
+      @click="downloadPDF"
     >
       <div
         i-fontisto-export
         text-5
-      ></div>
-      <div ml-2>Download PDF</div>
+      />
+      <div ml-2>
+        Download PDF
+      </div>
     </button>
   </div>
 </template>

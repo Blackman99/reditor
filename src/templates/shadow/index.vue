@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { resumeMatchedI18n } from '@/i18n'
 import Header from './Header.vue'
 import Section from './Section.vue'
+import { resumeMatchedI18n } from '@/store'
 </script>
+
 <template>
   <div>
     <Header />

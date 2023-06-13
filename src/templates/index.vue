@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { templateName } from './store'
+import { templateName } from '@/store'
 </script>
+
 <template>
   <div
     id="resume-container"
-    mx-auto
-    max-w-4xl
+    class="mx-auto w-[800px]"
     font-sans
   >
     <Component :is="templateName" />

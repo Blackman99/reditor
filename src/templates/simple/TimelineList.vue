@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import List from './List.vue'
+
 defineProps<{
   items: {
     title: string
@@ -12,10 +13,11 @@ defineProps<{
   }[]
 }>()
 </script>
+
 <template>
   <ul class="experience-list">
     <li
-      v-for="({ title, subtitle, append, contents }, i) in items"
+      v-for="({ title, subtitle, append, contents }) in items"
       :key="title"
       class="experience-item"
     >
@@ -28,7 +30,9 @@ defineProps<{
           flex
           items-center
         >
-          <div font-bold>{{ title }}</div>
+          <div font-bold>
+            {{ title }}
+          </div>
 
           <div
             ml-4
@@ -44,7 +48,7 @@ defineProps<{
           {{ append }}
         </div>
       </div>
-      <template v-for="con in contents">
+      <template v-for="con, j in contents" :key="j">
         <div
           mt-4
           mb-2
@@ -56,6 +60,7 @@ defineProps<{
     </li>
   </ul>
 </template>
+
 <style scoped>
 .experience-list {
   list-style: none;

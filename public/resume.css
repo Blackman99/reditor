@@ -1,7 +1,10 @@
- html {
-   font-size: 14px;
- }
+html,
+body {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
 
- svg {
+svg {
   vertical-align: middle;
- }
+}

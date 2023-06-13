@@ -1,15 +1,16 @@
 <script lang="ts" setup>
-import { resumeMatchedI18n } from '../../i18n'
 import HeaderInfo from './HeaderInfo.vue'
 import SectionTitle from './SectionTitle.vue'
 import List from './List.vue'
 import TimelineList from './TimelineList.vue'
+import { resumeMatchedI18n } from '@/store'
 import Person from '@/icons/Person.vue'
 import Briefcase from '@/icons/Briefcase.vue'
 import Education from '@/icons/Education.vue'
 import Gallery from '@/icons/Gallery.vue'
 import Smile from '@/icons/Smile.vue'
 </script>
+
 <template>
   <div p-4>
     <HeaderInfo />
