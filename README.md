@@ -1,4 +1,4 @@
-# An easy way to write your resume
+# A collection of charged resume templates that I encountered
 
 ### Features
 
