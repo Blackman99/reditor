@@ -16,14 +16,6 @@ export function deleteWorkingExperience(idx: number) {
   ensureAtLeastOneAfterDelete(resume[locale.value].workingExperiences, idx, createWorkingExperience)
 }
 
-export function updateResponsibility(weIdx: number, reIdx: number, re: string) {
-  resume[locale.value].workingExperiences[weIdx].responsibilities[reIdx] = re
-}
-
-export function updateAchievement(weIdx: number, achIdx: number, ach: string) {
-  resume[locale.value].workingExperiences[weIdx].achievements[achIdx] = ach
-}
-
 export function updateCompanyName(wIdx: number, newName: string) {
   resume[locale.value].workingExperiences[wIdx].companyName = newName
 }

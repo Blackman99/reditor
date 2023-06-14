@@ -7,11 +7,12 @@ import {
   updateInstitutionName,
 } from '@/store'
 import {
-  updateAchievement,
   updateCompanyName,
-  updateEndTime, updateJobTitle, updateResponsibility, updateStartTime,
+  updateEndTime, updateJobTitle, updateStartTime,
 } from '@/store/working-experience'
+import { updateResponsibility } from '@/store/working-experience/responsibility'
 import { updatePersonalAdvantage } from '@/store/personal-advantages'
+import { updateAchievement } from '@/store/working-experience/achievement'
 </script>
 
 <template>

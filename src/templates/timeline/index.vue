@@ -7,10 +7,11 @@ import {
   resumeMatchedI18n, updateEduAchievement, updateGallery,
 } from '@/store'
 import {
-  updateAchievement,
   updateCompanyName,
-  updateEndTime, updateJobTitle, updateResponsibility, updateStartTime,
+  updateEndTime, updateJobTitle, updateStartTime,
 } from '@/store/working-experience'
+import { updateResponsibility } from '@/store/working-experience/responsibility'
+import { updateAchievement } from '@/store/working-experience/achievement'
 import { updatePersonalAdvantage } from '@/store/personal-advantages'
 
 import Person from '@/icons/Person.vue'

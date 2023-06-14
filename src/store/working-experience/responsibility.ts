@@ -3,6 +3,10 @@ import { locale } from '..'
 import { t } from '@/i18n'
 import { ensureAtLeastOneAfterDelete, insertAfter, insertBefore } from '@/utils/array'
 
+export function updateResponsibility(weIdx: number, reIdx: number, re: string) {
+  resume[locale.value].workingExperiences[weIdx].responsibilities[reIdx] = re
+}
+
 export function createMenus(wIdx: number, reIdx: number) {
   return [
     {
