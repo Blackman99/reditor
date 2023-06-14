@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { resumeMatchedI18n, templateName } from '@/store'
 import resumeConfig from '@/store/resume'
+import { languages } from '@/i18n'
 
 const templateNames = Object.keys(
   import.meta.glob('./templates/*/index.vue', { eager: true }),
@@ -33,6 +34,7 @@ async function downloadPDF() {
     flex
     flex-col
     gap-4
+    w-10vw
   >
     <div
       flex
@@ -44,7 +46,7 @@ async function downloadPDF() {
         i-ion-language
       />
       <div ml-2>
-        Language
+        {{ $t('languages') }}
       </div>
     </div>
     <div
@@ -58,9 +60,9 @@ async function downloadPDF() {
         :key="path"
         :to="path"
         active-class="bg-blue text-white"
-        class="leading-8 px-2 hover:bg-gray-2 active:bg-gray-4"
+        class="leading-8 decoration-none text-gray-8 px-2 hover:bg-gray-2 active:bg-gray-4"
       >
-        {{ path }}
+        {{ languages[path as I18n] }}
       </router-link>
     </div>
 
@@ -75,7 +77,7 @@ async function downloadPDF() {
         i-gridicons-themes
       />
       <div ml-2>
-        Themes
+        {{ $t('themes') }}
       </div>
     </div>
     <div
@@ -103,9 +105,7 @@ async function downloadPDF() {
         {{ tName }}
       </div>
     </div>
-    <div flex justify-center>
-      <a href="https://github.com/Blackman99/resume-templates" target="_blank" text-8 i-mdi-github />
-    </div>
+    <a href="https://github.com/Blackman99/resume-templates" target="_blank" text-8 i-mdi-github />
   </div>
   <div
     fixed
@@ -132,7 +132,7 @@ async function downloadPDF() {
         text-5
       />
       <div ml-2>
-        Download PDF
+        {{ $t('downloadPDF') }}
       </div>
     </button>
   </div>

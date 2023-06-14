@@ -2,11 +2,23 @@
 import Header from './Header.vue'
 import Section from './Section.vue'
 import {
-  resumeMatchedI18n,
-  updateAchievement, updateCompanyName, updateEduAchievement, updateEduEnd, updateEduStart, updateEndTime, updateGallery,
-  updateInstitutionName, updateJobTitle, updateMajor,
-  updatePersonalAdvantage, updateResponsibility, updateStartTime,
+  resumeMatchedI18n, updateEduAchievement, updateEduEnd,
+  updateEduStart, updateGallery,
+  updateInstitutionName,
+  updateMajor,
 } from '@/store'
+import {
+  createMenus as createWorkingExperienceMenus,
+  updateAchievement,
+  updateCompanyName, updateEndTime, updateJobTitle, updateResponsibility,
+  updateStartTime,
+} from '@/store/working-experience'
+import { createMenus, updatePersonalAdvantage } from '@/store/personal-advantages'
+import { createMenus as createResponsibilityMenus } from '@/store/working-experience/responsibility'
+import { createMenus as createAchievementMenus } from '@/store/working-experience/achievement'
+import { createMenus as createEducationExperienceMenus } from '@/store/education-experience'
+import { createMenus as createEduAchievementMenus } from '@/store/education-experience/achievement'
+import { createMenus as createGalleryMenus } from '@/store/gallery'
 </script>
 
 <template>
@@ -19,7 +31,11 @@ import {
             v-for="ad, adIdx in resumeMatchedI18n.personalAdvantages"
             :key="adIdx"
           >
-            <editable-span :model-value="ad" @update:model-value="(newPa: string) => updatePersonalAdvantage(adIdx, newPa)" />
+            <Operable
+              :menus="createMenus(adIdx)"
+            >
+              <editable-span :model-value="ad" @update:model-value="(newPa: string) => updatePersonalAdvantage(adIdx, newPa)" />
+            </Operable>
           </li>
         </ul>
       </Section>
@@ -28,10 +44,11 @@ import {
         :title="resumeMatchedI18n.workingExperiencesTitle"
       >
         <div pl-10>
-          <div
+          <Operable
             v-for="wo, wIdx in resumeMatchedI18n.workingExperiences"
             :key="wIdx"
             mb-4
+            :menus="createWorkingExperienceMenus(wIdx)"
           >
             <div
               flex
@@ -64,11 +81,13 @@ import {
                 v-for="re, reIdx in wo.responsibilities"
                 :key="reIdx"
               >
-                <editable-span
-                  :model-value="re" @update:model-value="(newRe: string) => {
-                    updateResponsibility(wIdx, reIdx, newRe)
-                  }"
-                />
+                <Operable :menus="createResponsibilityMenus(wIdx, reIdx)">
+                  <editable-span
+                    :model-value="re" @update:model-value="(newRe: string) => {
+                      updateResponsibility(wIdx, reIdx, newRe)
+                    }"
+                  />
+                </Operable>
               </li>
             </ul>
             <div>
@@ -84,10 +103,12 @@ import {
                 v-for="ach, achIdx in wo.achievements"
                 :key="achIdx"
               >
-                <editable-span :model-value="ach" @update:model-value="(newAch: string) => updateAchievement(wIdx, achIdx, newAch)" />
+                <Operable :menus="createAchievementMenus(wIdx, achIdx)">
+                  <editable-span :model-value="ach" @update:model-value="(newAch: string) => updateAchievement(wIdx, achIdx, newAch)" />
+                </Operable>
               </li>
             </ul>
-          </div>
+          </Operable>
         </div>
       </Section>
       <Section
@@ -95,10 +116,11 @@ import {
         mt-8
       >
         <div pl-10>
-          <div
+          <Operable
             v-for="edu, eduIdx in resumeMatchedI18n.educationExperiences"
             :key="eduIdx"
             mb-4
+            :menus="createEducationExperienceMenus(eduIdx)"
           >
             <div
               flex
@@ -129,10 +151,12 @@ import {
                 v-for="ach, achIdx in edu.achievements"
                 :key="achIdx"
               >
-                <editable-span :model-value="ach" @update:model-value="(next: string) => updateEduAchievement(eduIdx, achIdx, next)" />
+                <Operable :menus="createEduAchievementMenus(eduIdx, achIdx)">
+                  <editable-span :model-value="ach" @update:model-value="(next: string) => updateEduAchievement(eduIdx, achIdx, next)" />
+                </Operable>
               </li>
             </ul>
-          </div>
+          </Operable>
         </div>
       </Section>
       <Section
@@ -144,7 +168,9 @@ import {
             v-for="(ga, gaIdx) in resumeMatchedI18n.galleryItems"
             :key="gaIdx"
           >
-            <editable-span :model-value="ga" @update:model-value="(newGa: string) => updateGallery(gaIdx, newGa)" />
+            <Operable :menus="createGalleryMenus(gaIdx)">
+              <editable-span :model-value="ga" @update:model-value="(newGa: string) => updateGallery(gaIdx, newGa)" />
+            </Operable>
           </li>
         </ul>
       </Section>

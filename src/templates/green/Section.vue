@@ -40,16 +40,5 @@ defineProps<{
     #007b86 var(--section-title-width),
     transparent var(--section-title-width)
   );
-
-  &::after {
-    content: ' ';
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    z-index: 3;
-    background-color: #fff;
-  }
 }
 </style>

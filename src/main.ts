@@ -1,10 +1,14 @@
 import 'uno.css'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import { Quasar } from 'quasar'
 import Page from './templates/index.vue'
 import EditableSpan from './components/EditableSpan.vue'
+import Operable from './components/Operable.vue'
 import App from './App.vue'
 import { locale } from '@/store'
+import 'quasar/src/css/index.sass'
+import { t } from '@/i18n'
 
 const routes = [{ path: '/:pathMatch(.*)*', component: Page }]
 
@@ -32,8 +36,16 @@ Object.entries(templates).forEach(([path, templateComponent]) => {
   app.component(name, (templateComponent as any).default)
 })
 
-app.use(router)
+app
+  .use(router)
+  .use(Quasar, {
+    plugins: {
+      //
+    },
+  })
+  .component('EditableSpan', EditableSpan)
+  .component('Operable', Operable)
 
-app.component('EditableSpan', EditableSpan)
+app.config.globalProperties.$t = t
 
 app.mount('#app')

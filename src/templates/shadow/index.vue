@@ -1,7 +1,17 @@
 <script setup lang="ts">
 import Header from './Header.vue'
 import Section from './Section.vue'
-import { resumeMatchedI18n, updateAchievement, updateCompanyName, updateEduAchievement, updateEduEnd, updateEduStart, updateEndTime, updateGallery, updateInstitutionName, updateJobTitle, updatePersonalAdvantage, updateResponsibility, updateStartTime } from '@/store'
+import {
+  resumeMatchedI18n, updateEduAchievement, updateEduEnd,
+  updateEduStart, updateGallery,
+  updateInstitutionName,
+} from '@/store'
+import {
+  updateAchievement,
+  updateCompanyName,
+  updateEndTime, updateJobTitle, updateResponsibility, updateStartTime,
+} from '@/store/working-experience'
+import { updatePersonalAdvantage } from '@/store/personal-advantages'
 </script>
 
 <template>

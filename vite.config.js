@@ -1,8 +1,9 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
-import { presetAttributify, presetIcons, presetUno } from 'unocss'
+import { presetAttributify, presetIcons, presetUno, transformerDirectives } from 'unocss'
 import vue from '@vitejs/plugin-vue'
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 
 export default defineConfig({
   base: '',
@@ -15,7 +16,6 @@ export default defineConfig({
     },
   },
   plugins: [
-    vue(),
     Unocss({
       rules: [
         [
@@ -38,6 +38,13 @@ export default defineConfig({
         ],
       ],
       presets: [presetAttributify(), presetUno(), presetIcons()],
+      transformers: [transformerDirectives()],
+    }),
+    vue({
+      template: { transformAssetUrls },
+    }),
+    quasar({
+      sassVariables: 'src/quasar-variables.sass',
     }),
   ],
 })

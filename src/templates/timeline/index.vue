@@ -3,7 +3,16 @@ import HeaderInfo from './HeaderInfo.vue'
 import SectionTitle from './SectionTitle.vue'
 import List from './List.vue'
 import TimelineList from './TimelineList.vue'
-import { resumeMatchedI18n, updateAchievement, updateCompanyName, updateEduAchievement, updateEndTime, updateGallery, updateJobTitle, updatePersonalAdvantage, updateResponsibility, updateStartTime } from '@/store'
+import {
+  resumeMatchedI18n, updateEduAchievement, updateGallery,
+} from '@/store'
+import {
+  updateAchievement,
+  updateCompanyName,
+  updateEndTime, updateJobTitle, updateResponsibility, updateStartTime,
+} from '@/store/working-experience'
+import { updatePersonalAdvantage } from '@/store/personal-advantages'
+
 import Person from '@/icons/Person.vue'
 import Briefcase from '@/icons/Briefcase.vue'
 import Education from '@/icons/Education.vue'

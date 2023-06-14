@@ -5,7 +5,7 @@ import { templateName } from '@/store'
 <template>
   <div
     id="resume-container"
-    class="mx-auto w-[800px]"
+    class="mx-auto w-[800px] pb-16 bg-white"
     font-sans
   >
     <Component :is="templateName" />

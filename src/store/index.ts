@@ -20,6 +20,7 @@ export function createProfileGetterAndSetter<T extends keyof Profile>(key: T) {
   })
 }
 
+// For directly v-model bindings
 export const name = createProfileGetterAndSetter('name')
 
 export const gender = createProfileGetterAndSetter('gender')
@@ -34,33 +35,7 @@ export const phone = createProfileGetterAndSetter('phone')
 
 export const email = createProfileGetterAndSetter('email')
 
-export function updateResponsibility(weIdx: number, reIdx: number, re: string) {
-  resume[locale.value].workingExperiences[weIdx].responsibilities[reIdx] = re
-}
-
-export function updateAchievement(weIdx: number, achIdx: number, ach: string) {
-  resume[locale.value].workingExperiences[weIdx].achievements[achIdx] = ach
-}
-
-export function updateCompanyName(wIdx: number, newName: string) {
-  resume[locale.value].workingExperiences[wIdx].companyName = newName
-}
-
-export function updateJobTitle(wIdx: number, newJobTitle: string) {
-  resume[locale.value].workingExperiences[wIdx].jobTitle = newJobTitle
-}
-
-export function updateStartTime(wIdx: number, newTime: string) {
-  resume[locale.value].workingExperiences[wIdx].start = newTime
-}
-
-export function updateEndTime(wIdx: number, newTime: string) {
-  resume[locale.value].workingExperiences[wIdx].end = newTime
-}
-
-export function updatePersonalAdvantage(idx: number, v: string) {
-  resume[locale.value].personalAdvantages[idx] = v
-}
+// For separate @update:model-value event
 
 export function updateGallery(gaIdx: number, newGa: string) {
   resume[locale.value].galleryItems[gaIdx] = newGa
