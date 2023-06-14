@@ -103,6 +103,9 @@ async function downloadPDF() {
         {{ tName }}
       </div>
     </div>
+    <div flex justify-center>
+      <a href="https://github.com/Blackman99/resume-templates" target="_blank" text-8 i-mdi-github />
+    </div>
   </div>
   <div
     fixed

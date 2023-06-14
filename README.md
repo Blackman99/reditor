@@ -3,10 +3,16 @@
 ## Introduction
 Make charged the resume templates that I encountered become free
 
-### Features
+## Features
 
+- Popup editor for all resume templates
 - I18n (English/Chinese)
 - Templates Switcher
 - Export PDF
 
 [Online Demos](https://resume-helper.netlify.app/)
+
+
+## LICENSE
+
+[MIT](./LICENSE)
