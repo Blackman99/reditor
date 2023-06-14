@@ -3,12 +3,11 @@ import HeaderInfo from './HeaderInfo.vue'
 import SectionTitle from './SectionTitle.vue'
 import List from './List.vue'
 import TimelineList from './TimelineList.vue'
-import { resumeMatchedI18n } from '@/store'
+import { resumeMatchedI18n, updateAchievement, updateCompanyName, updateEduAchievement, updateEndTime, updateGallery, updateJobTitle, updatePersonalAdvantage, updateResponsibility, updateStartTime } from '@/store'
 import Person from '@/icons/Person.vue'
 import Briefcase from '@/icons/Briefcase.vue'
 import Education from '@/icons/Education.vue'
 import Gallery from '@/icons/Gallery.vue'
-import Smile from '@/icons/Smile.vue'
 </script>
 
 <template>
@@ -23,7 +22,7 @@ import Smile from '@/icons/Smile.vue'
         <Person />
       </template>
     </SectionTitle>
-    <List :items="resumeMatchedI18n.personalAdvantages" />
+    <List :items="resumeMatchedI18n.personalAdvantages" @update="updatePersonalAdvantage" />
     <!-- Working Experiences -->
     <SectionTitle :title="resumeMatchedI18n.workingExperiencesTitle">
       <template #icon>
@@ -32,7 +31,7 @@ import Smile from '@/icons/Smile.vue'
     </SectionTitle>
     <TimelineList
       :items="
-        resumeMatchedI18n.workingExperiences.map(wo => ({
+        resumeMatchedI18n.workingExperiences.map((wo, wIdx) => ({
           title: wo.companyName,
           subtitle: wo.jobTitle,
           append: `${wo.start} - ${wo.end}`,
@@ -40,15 +39,25 @@ import Smile from '@/icons/Smile.vue'
             {
               title: resumeMatchedI18n.responsibilitiesTitle,
               items: wo.responsibilities,
+              updater: (reIdx, next) => updateResponsibility(wIdx, reIdx, next),
             },
             {
               title: resumeMatchedI18n.achievementsTitle,
               items: wo.achievements,
+              updater: (reIdx, next) => updateAchievement(wIdx, reIdx, next),
             },
           ],
         }))
       "
-    />
+      @update-title="updateCompanyName"
+      @update-subtitle="updateJobTitle"
+    >
+      <template #append="{ i }">
+        <editable-span :model-value="resumeMatchedI18n.workingExperiences[i].start" @update:model-value="(next: string) => updateStartTime(i, next)" />
+        -
+        <editable-span :model-value="resumeMatchedI18n.workingExperiences[i].end" @update:model-value="(next: string) => updateEndTime(i, next)" />
+      </template>
+    </TimelineList>
     <SectionTitle :title="resumeMatchedI18n.educationExperienceTitle">
       <template #icon>
         <Education />
@@ -56,13 +65,14 @@ import Smile from '@/icons/Smile.vue'
     </SectionTitle>
     <TimelineList
       :items="
-        resumeMatchedI18n.educationExperiences.map(edu => ({
+        resumeMatchedI18n.educationExperiences.map((edu, i) => ({
           title: edu.institutionName,
           subtitle: edu.major,
           append: `${edu.start} - ${edu.end}`,
           contents: [
             {
               items: edu.achievements,
+              updater: (achIdx, next) => updateEduAchievement(i, achIdx, next),
             },
           ],
         }))
@@ -74,20 +84,6 @@ import Smile from '@/icons/Smile.vue'
         <Gallery />
       </template>
     </SectionTitle>
-    <List :items="resumeMatchedI18n.galleryItems" />
-    <div
-      justify-center
-      flex
-      items-center
-      my-10
-      text-gray-4
-    >
-      {{ resumeMatchedI18n.footer }}
-
-      <Smile
-        ml-1
-        text-6
-      />
-    </div>
+    <List :items="resumeMatchedI18n.galleryItems" @update="updateGallery" />
   </div>
 </template>

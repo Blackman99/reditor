@@ -9,16 +9,23 @@ defineProps<{
     contents: {
       title?: string
       items: string[]
+      updater: (i: number, next: string) => void
     }[]
   }[]
+}>()
+
+defineEmits<{
+  (e: 'update-title', idx: number, next: string): void
+  (e: 'update-subtitle', idx: number, next: string): void
+  (e: 'update-append', idx: number, next: string): void
 }>()
 </script>
 
 <template>
   <ul class="experience-list">
     <li
-      v-for="({ title, subtitle, append, contents }) in items"
-      :key="title"
+      v-for="({ title, subtitle, append, contents }, i) in items"
+      :key="i"
       class="experience-item"
     >
       <div
@@ -31,21 +38,23 @@ defineProps<{
           items-center
         >
           <div font-bold>
-            {{ title }}
+            <editable-span :model-value="title" @update:model-value="(next: string) => $emit('update-title', i, next)" />
           </div>
 
           <div
             ml-4
             text-gray-6
           >
-            {{ subtitle }}
+            <editable-span :model-value="subtitle" @update:model-value="(next: string) => $emit('update-subtitle', i, next)" />
           </div>
         </div>
         <div
           text-gray-4
           text-3
         >
-          {{ append }}
+          <slot name="append" v-bind="{ i }">
+            <editable-span :model-value="append" @update:model-value="(next: string) => $emit('update-append', i, next)" />
+          </slot>
         </div>
       </div>
       <template v-for="con, j in contents" :key="j">
@@ -55,7 +64,7 @@ defineProps<{
         >
           {{ con.title }}
         </div>
-        <List :items="con.items" />
+        <List :items="con.items" @update="con.updater" />
       </template>
     </li>
   </ul>

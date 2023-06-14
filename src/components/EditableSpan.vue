@@ -56,6 +56,7 @@ async function recomputePos() {
 async function handleShow() {
   showEditor.value = true
   await recomputePos()
+  editorDom.value.querySelector('textarea')?.focus()
 }
 
 onMounted(recomputePos)

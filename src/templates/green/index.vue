@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import Header from './Header.vue'
 import Section from './Section.vue'
-import { resumeMatchedI18n, updateResponsibility } from '@/store'
+import {
+  resumeMatchedI18n,
+  updateAchievement, updateCompanyName, updateEduAchievement, updateEduEnd, updateEduStart, updateEndTime, updateGallery,
+  updateInstitutionName, updateJobTitle, updateMajor,
+  updatePersonalAdvantage, updateResponsibility, updateStartTime,
+} from '@/store'
 </script>
 
 <template>
@@ -11,10 +16,10 @@ import { resumeMatchedI18n, updateResponsibility } from '@/store'
       <Section :title="resumeMatchedI18n.personalAdvantageTitle">
         <ul m-0>
           <li
-            v-for="ad in resumeMatchedI18n.personalAdvantages"
-            :key="ad"
+            v-for="ad, adIdx in resumeMatchedI18n.personalAdvantages"
+            :key="adIdx"
           >
-            {{ ad }}
+            <editable-span :model-value="ad" @update:model-value="(newPa: string) => updatePersonalAdvantage(adIdx, newPa)" />
           </li>
         </ul>
       </Section>
@@ -37,12 +42,14 @@ import { resumeMatchedI18n, updateResponsibility } from '@/store'
                 flex
                 items-center
               >
-                <b t-000000>{{ wo.companyName }}</b>
+                <b t-000000>
+                  <editable-span :model-value="wo.companyName" @update:model-value="(newName: string) => updateCompanyName(wIdx, newName)" />
+                </b>
                 <div ml-4>
-                  {{ wo.jobTitle }}
+                  <editable-span :model-value="wo.jobTitle" @update:model-value="(newJobTitle: string) => updateJobTitle(wIdx, newJobTitle)" />
                 </div>
               </div>
-              <div>{{ wo.start }} - {{ wo.end }}</div>
+              <div><editable-span :model-value="wo.start" @update:model-value="(newTime: string) => updateStartTime(wIdx, newTime)" /> - <editable-span :model-value="wo.end" @update:model-value="(newTime: string) => updateEndTime(wIdx, newTime)" /></div>
             </div>
             <div>
               <b>
@@ -74,10 +81,10 @@ import { resumeMatchedI18n, updateResponsibility } from '@/store'
               list-decimal
             >
               <li
-                v-for="ach, i in wo.achievements"
-                :key="i"
+                v-for="ach, achIdx in wo.achievements"
+                :key="achIdx"
               >
-                {{ ach }}
+                <editable-span :model-value="ach" @update:model-value="(newAch: string) => updateAchievement(wIdx, achIdx, newAch)" />
               </li>
             </ul>
           </div>
@@ -89,8 +96,8 @@ import { resumeMatchedI18n, updateResponsibility } from '@/store'
       >
         <div pl-10>
           <div
-            v-for="edu in resumeMatchedI18n.educationExperiences"
-            :key="edu.institutionName"
+            v-for="edu, eduIdx in resumeMatchedI18n.educationExperiences"
+            :key="eduIdx"
             mb-4
           >
             <div
@@ -102,22 +109,27 @@ import { resumeMatchedI18n, updateResponsibility } from '@/store'
                 flex
                 items-center
               >
-                <b t-000000>{{ edu.institutionName }}</b>
+                <b t-000000>
+                  <editable-span :model-value="edu.institutionName" @update:model-value="(newName: string) => updateInstitutionName(eduIdx, newName)" />
+                </b>
                 <div ml-4>
-                  {{ edu.major }}
+                  <editable-span :model-value="edu.major" @update:model-value="(newMajor: string) => updateMajor(eduIdx, newMajor)" />
                 </div>
               </div>
-              <div>{{ edu.start }} - {{ edu.end }}</div>
+              <div>
+                <editable-span :model-value="edu.start" @update:model-value="(next: string) => updateEduStart(eduIdx, next)" />
+                - <editable-span :model-value="edu.end" @update:model-value="(next: string) => updateEduEnd(eduIdx, next)" />
+              </div>
             </div>
             <ul
               m-0
               list-decimal
             >
               <li
-                v-for="ach in edu.achievements"
-                :key="ach"
+                v-for="ach, achIdx in edu.achievements"
+                :key="achIdx"
               >
-                {{ ach }}
+                <editable-span :model-value="ach" @update:model-value="(next: string) => updateEduAchievement(eduIdx, achIdx, next)" />
               </li>
             </ul>
           </div>
@@ -129,10 +141,10 @@ import { resumeMatchedI18n, updateResponsibility } from '@/store'
       >
         <ul m-0>
           <li
-            v-for="ga in resumeMatchedI18n.galleryItems"
-            :key="ga"
+            v-for="(ga, gaIdx) in resumeMatchedI18n.galleryItems"
+            :key="gaIdx"
           >
-            {{ ga }}
+            <editable-span :model-value="ga" @update:model-value="(newGa: string) => updateGallery(gaIdx, newGa)" />
           </li>
         </ul>
       </Section>
