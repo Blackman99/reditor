@@ -8,7 +8,6 @@ const resume = reactive<Resume>(storageResume
   ? JSON.parse(storageResume)
   : {
       '/': {
-        careerObjectiveTitle: 'Career Objective',
         profile: {
           name: 'Your name',
           careerObjective: 'Front-end/Fullstack Development Engineer',
@@ -18,7 +17,6 @@ const resume = reactive<Resume>(storageResume
           phone: '18888888888',
           email: 'abc@cba.com',
         },
-        personalAdvantageTitle: 'Personal Advantage',
         personalAdvantages: [
           'xxx years of development experience',
           'Have personal blog and open source project experience',
@@ -78,16 +76,11 @@ const resume = reactive<Resume>(storageResume
             ],
           },
         ],
-        workingExperiencesTitle: 'Working Experience',
-        responsibilitiesTitle: 'Responsibilities',
-        achievementsTitle: 'Achievements',
-        galleryTitle: 'Gallery',
         footer: 'Looking forward to working with you',
         galleryItems: [
           'Personal blog: https://xxx.xxx.com/',
           'XXXX project: https://github.com/xxx/xxx',
         ],
-        educationExperienceTitle: 'Education Experience',
         educationExperiences: [
           {
             institutionName: 'XXXX XXXXX University',
@@ -112,7 +105,6 @@ const resume = reactive<Resume>(storageResume
             sectionTitleWidth: '100px',
           },
         },
-        careerObjectiveTitle: '期望职位',
         profile: {
           name: '你的名字',
           careerObjective: 'XXX开发工程师',
@@ -122,16 +114,12 @@ const resume = reactive<Resume>(storageResume
           phone: '18888888888',
           email: 'foo@bar.zoo',
         },
-        personalAdvantageTitle: '个人优势',
         personalAdvantages: [
           'XX年XXX经验',
           '熟悉XXX，XXX',
           '敢于创新，拥抱开源，乐于学习新事物，自驱强',
           '良好的英语听说读写能力（CET6）',
         ],
-        workingExperiencesTitle: '工作经历',
-        responsibilitiesTitle: '职责',
-        achievementsTitle: '成果',
         workingExperiences: [
           {
             companyName: 'XXXXX科技有限公司',
@@ -187,8 +175,6 @@ const resume = reactive<Resume>(storageResume
           '个人博客：https://xxx.xxx.me',
           'XXX项目：https://github.com/xxx/xx',
         ],
-        galleryTitle: '作品长廊',
-        educationExperienceTitle: '教育经历',
         educationExperiences: [
           {
             institutionName: 'XXXX大学',

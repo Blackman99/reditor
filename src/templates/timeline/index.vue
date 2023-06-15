@@ -1,23 +1,25 @@
 <script lang="ts" setup>
 import HeaderInfo from './HeaderInfo.vue'
 import SectionTitle from './SectionTitle.vue'
-import List from './List.vue'
 import TimelineList from './TimelineList.vue'
 import {
-  resumeMatchedI18n, updateEduAchievement, updateGallery,
+  resumeMatchedI18n,
 } from '@/store'
-import {
-  updateCompanyName,
-  updateEndTime, updateJobTitle, updateStartTime,
-} from '@/store/working-experience'
-import { updateResponsibility } from '@/store/working-experience/responsibility'
-import { updateAchievement } from '@/store/working-experience/achievement'
-import { updatePersonalAdvantage } from '@/store/personal-advantages'
 
 import Person from '@/icons/Person.vue'
 import Briefcase from '@/icons/Briefcase.vue'
 import Education from '@/icons/Education.vue'
 import Gallery from '@/icons/Gallery.vue'
+import WorkingExperiences from '@/components/WorkingExperiences.vue'
+import Responsibilities from '@/components/Responsibilities.vue'
+import ResponsibilityItem from '@/components/ResponsibilityItem.vue'
+import Achievements from '@/components/Achievements.vue'
+import AchievementItem from '@/components/AchievementItem.vue'
+import Educations from '@/components/Educations.vue'
+import EduAchievements from '@/components/EduAchievements.vue'
+import EduAchievementItem from '@/components/EduAchievementItem.vue'
+import Galleries from '@/components/Galleries.vue'
+import GalleryItem from '@/components/GalleryItem.vue'
 </script>
 
 <template>
@@ -25,75 +27,74 @@ import Gallery from '@/icons/Gallery.vue'
     <HeaderInfo />
     <!-- Personal Advantages -->
     <SectionTitle
-      :title="resumeMatchedI18n.personalAdvantageTitle"
+      :title="$t('personalAdvantages')"
       mt-8
     >
       <template #icon>
         <Person />
       </template>
     </SectionTitle>
-    <List :items="resumeMatchedI18n.personalAdvantages" @update="updatePersonalAdvantage" />
+    <ul
+      list-disc
+      text-gray-6
+      leading-8
+    >
+      <Advantages>
+        <li>
+          <AdvantagesItem />
+        </li>
+      </Advantages>
+    </ul>
     <!-- Working Experiences -->
-    <SectionTitle :title="resumeMatchedI18n.workingExperiencesTitle">
+    <SectionTitle :title="$t('workingExperiences')">
       <template #icon>
         <Briefcase />
       </template>
     </SectionTitle>
     <TimelineList
-      :items="
-        resumeMatchedI18n.workingExperiences.map((wo, wIdx) => ({
-          title: wo.companyName,
-          subtitle: wo.jobTitle,
-          append: `${wo.start} - ${wo.end}`,
-          contents: [
-            {
-              title: resumeMatchedI18n.responsibilitiesTitle,
-              items: wo.responsibilities,
-              updater: (reIdx, next) => updateResponsibility(wIdx, reIdx, next),
-            },
-            {
-              title: resumeMatchedI18n.achievementsTitle,
-              items: wo.achievements,
-              updater: (reIdx, next) => updateAchievement(wIdx, reIdx, next),
-            },
-          ],
-        }))
-      "
-      @update-title="updateCompanyName"
-      @update-subtitle="updateJobTitle"
+      :list-component="WorkingExperiences"
     >
-      <template #append="{ i }">
-        <editable-span :model-value="resumeMatchedI18n.workingExperiences[i].start" @update:model-value="(next: string) => updateStartTime(i, next)" />
-        -
-        <editable-span :model-value="resumeMatchedI18n.workingExperiences[i].end" @update:model-value="(next: string) => updateEndTime(i, next)" />
+      <template #title>
+        <CompanyName />
       </template>
+      <template #sub-title>
+        <JobTitle />
+      </template>
+      <template #append>
+        <WorkingDuration />
+      </template>
+      <div font-bold text-3 mt-2>
+        {{ $t('responsibilities') }}
+      </div>
+      <List :list-component="Responsibilities" :item-component="ResponsibilityItem" />
+      <div font-bold text-3>
+        {{ $t('achievements') }}
+      </div>
+      <List :list-component="Achievements" :item-component="AchievementItem" />
     </TimelineList>
-    <SectionTitle :title="resumeMatchedI18n.educationExperienceTitle">
+    <SectionTitle :title="$t('educationExperiences')">
       <template #icon>
         <Education />
       </template>
     </SectionTitle>
-    <TimelineList
-      :items="
-        resumeMatchedI18n.educationExperiences.map((edu, i) => ({
-          title: edu.institutionName,
-          subtitle: edu.major,
-          append: `${edu.start} - ${edu.end}`,
-          contents: [
-            {
-              items: edu.achievements,
-              updater: (achIdx, next) => updateEduAchievement(i, achIdx, next),
-            },
-          ],
-        }))
-      "
-    />
+    <TimelineList :list-component="Educations">
+      <template #title>
+        <InstitutionName />
+      </template>
+      <template #sub-title>
+        <Major />
+      </template>
+      <template #append>
+        <EducationDuration />
+      </template>
+      <List :list-component="EduAchievements" :item-component="EduAchievementItem" />
+    </TimelineList>
     <!-- Gallery -->
     <SectionTitle :title="resumeMatchedI18n.galleryTitle">
       <template #icon>
         <Gallery />
       </template>
     </SectionTitle>
-    <List :items="resumeMatchedI18n.galleryItems" @update="updateGallery" />
+    <List :list-component="Galleries" :item-component="GalleryItem" />
   </div>
 </template>

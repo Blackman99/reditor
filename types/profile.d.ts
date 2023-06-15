@@ -24,12 +24,10 @@ interface ShadowConfig {
 }
 
 interface ResumeItem {
-  careerObjectiveTitle: string
   profile: Profile
   personalAdvantages: string[]
   personalAdvantageTitle: string
   workingExperiences: WorkingExperience[]
-  workingExperiencesTitle: string
   responsibilitiesTitle: string
   achievementsTitle: string
   footer: string

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import Divider from './Divider.vue'
-import { birthday, careerObjective, email, gender, location, name, phone, resumeMatchedI18n } from '@/store'
 </script>
 
 <template>
@@ -14,15 +13,17 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
       text-8
       leading-16
     >
-      <editable-span v-model="name" />
+      <Name />
     </div>
     <div
       text-4
       leading-8
     >
       <div>
-        {{ resumeMatchedI18n.careerObjectiveTitle }}:
-        <editable-span v-model="careerObjective" />
+        <span font-bold>
+          {{ $t('careerObjective') }}{{ $t('semi') }}
+        </span>
+        <CareerObjective />
       </div>
       <div
         flex
@@ -38,7 +39,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
             text-6
             mr-1
           />
-          <editable-span v-model="gender" />
+          <Gender />
         </div>
         <Divider />
         <div
@@ -50,7 +51,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
             text-6
             mr-1
           />
-          <editable-span v-model="birthday" />
+          <Birthday />
         </div>
         <Divider />
         <div
@@ -62,7 +63,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
             text-6
             mr-1
           />
-          <editable-span v-model="location" />
+          <Location />
         </div>
         <Divider />
         <div
@@ -74,7 +75,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
             text-6
             mr-1
           />
-          <editable-span v-model="phone" />
+          <Phone />
         </div>
         <Divider />
         <div
@@ -86,7 +87,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
             text-6
             mr-1
           />
-          <editable-span v-model="email" />
+          <Email />
         </div>
       </div>
     </div>

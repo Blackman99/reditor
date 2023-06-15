@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type WeContext, weContextKey } from './WEProvider.vue'
 import AchievementsProvider from './AchievementsProvider.vue'
-import { createMenus, updateAchievement } from '@/store/working-experience/achievement'
+import { createMenus } from '@/store/working-experience/achievement'
 
 const weContext = inject(weContextKey) as WeContext
 </script>
@@ -13,7 +13,7 @@ const weContext = inject(weContextKey) as WeContext
     :menus="createMenus(weContext.wIdx, achIdx)"
   >
     <AchievementsProvider v-bind="{ ach, achIdx }">
-      <editable-span :model-value="ach" @update:model-value="(newAch: string) => updateAchievement(weContext.wIdx, achIdx, newAch)" />
+      <slot />
     </AchievementsProvider>
   </Operable>
 </template>

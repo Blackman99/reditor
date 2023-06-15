@@ -1,17 +1,8 @@
 <script setup lang="ts">
-import List from './List.vue'
+import type { Component } from 'vue'
 
 defineProps<{
-  items: {
-    title: string
-    subtitle: string
-    append: string
-    contents: {
-      title?: string
-      items: string[]
-      updater: (i: number, next: string) => void
-    }[]
-  }[]
+  listComponent: Component
 }>()
 
 defineEmits<{
@@ -23,50 +14,40 @@ defineEmits<{
 
 <template>
   <ul class="experience-list">
-    <li
-      v-for="({ title, subtitle, append, contents }, i) in items"
-      :key="i"
-      class="experience-item"
-    >
-      <div
-        flex
-        justify-between
-        items-center
+    <component :is="listComponent">
+      <li
+        class="experience-item"
       >
         <div
           flex
+          justify-between
           items-center
         >
-          <div font-bold>
-            <editable-span :model-value="title" @update:model-value="(next: string) => $emit('update-title', i, next)" />
-          </div>
-
           <div
-            ml-4
-            text-gray-6
+            flex
+            items-center
           >
-            <editable-span :model-value="subtitle" @update:model-value="(next: string) => $emit('update-subtitle', i, next)" />
+            <div font-bold>
+              <slot name="title" />
+            </div>
+
+            <div
+              ml-4
+              text-gray-6
+            >
+              <slot name="sub-title" />
+            </div>
+          </div>
+          <div
+            text-gray-4
+            text-3
+          >
+            <slot name="append" />
           </div>
         </div>
-        <div
-          text-gray-4
-          text-3
-        >
-          <slot name="append" v-bind="{ i }">
-            <editable-span :model-value="append" @update:model-value="(next: string) => $emit('update-append', i, next)" />
-          </slot>
-        </div>
-      </div>
-      <template v-for="con, j in contents" :key="j">
-        <div
-          mt-4
-          mb-2
-        >
-          {{ con.title }}
-        </div>
-        <List :items="con.items" @update="con.updater" />
-      </template>
-    </li>
+        <slot />
+      </li>
+    </component>
   </ul>
 </template>
 

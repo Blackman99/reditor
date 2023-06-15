@@ -28,22 +28,23 @@ function focusTextarea() {
       font-serif m-0
       :class="{
         'text-gray-4': !modelValue,
+        'text-blue-5': showEditor && modelValue,
       }"
       @click="handleShow"
     >{{ modelValue || placeholder }}</pre>
-    <q-popup-proxy @show="focusTextarea">
+    <q-popup-proxy anchor="bottom right" @show="focusTextarea" @before-hide="showEditor = false">
       <div
         ref="editorDom"
         z-3
+        p-4 rounded-2 shadow-lg
         bg-black
-        p-4 rounded-2 shadow-md
         class="editor"
         :class="{
           show: showEditor,
         }"
         role="tooltip"
       >
-        <textarea :placeholder="placeholder" bg-transparent text-white w-full rows="5" :value="modelValue" @input="e => emit('update:modelValue', (e.target as HTMLTextAreaElement).value)" />
+        <textarea :placeholder="placeholder" text-gray-2 bg-transparent w-full rows="5" :value="modelValue" @input="e => emit('update:modelValue', (e.target as HTMLTextAreaElement).value)" />
       </div>
     </q-popup-proxy>
   </div>

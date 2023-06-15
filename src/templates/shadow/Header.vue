@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-import { birthday, email, location, phone, resumeMatchedI18n } from '@/store'
-</script>
-
 <template>
   <div p-8>
     <div
@@ -15,7 +11,7 @@ import { birthday, email, location, phone, resumeMatchedI18n } from '@/store'
       leading-8
     >
       <div>
-        {{ resumeMatchedI18n.careerObjectiveTitle }}:
+        {{ $t('careerObjective') }}{{ $t('semi') }}
         <CareerObjective />
       </div>
       <div
@@ -48,7 +44,7 @@ import { birthday, email, location, phone, resumeMatchedI18n } from '@/store'
             text-6
             mr-1
           />
-          <editable-span v-model="birthday" />
+          <Birthday />
         </div>
         <div
           h-3
@@ -64,7 +60,7 @@ import { birthday, email, location, phone, resumeMatchedI18n } from '@/store'
             text-6
             mr-1
           />
-          <editable-span v-model="location" />
+          <Location />
         </div>
         <div
           h-3
@@ -80,7 +76,7 @@ import { birthday, email, location, phone, resumeMatchedI18n } from '@/store'
             text-6
             mr-1
           />
-          <editable-span v-model="phone" />
+          <Phone />
         </div>
         <div
           h-3
@@ -96,7 +92,7 @@ import { birthday, email, location, phone, resumeMatchedI18n } from '@/store'
             text-6
             mr-1
           />
-          <editable-span v-model="email" />
+          <Email />
         </div>
       </div>
     </div>

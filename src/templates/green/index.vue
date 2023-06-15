@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import Header from './Header.vue'
 import Section from './Section.vue'
-import {
-  resumeMatchedI18n,
-} from '@/store'
 </script>
 
 <template>
   <div>
     <Header />
     <div p-6>
-      <Section :title="resumeMatchedI18n.personalAdvantageTitle">
+      <Section :title="$t('personalAdvantages')">
         <ul m-0>
           <Advantages>
             <li>
@@ -21,7 +18,7 @@ import {
       </Section>
       <Section
         mt-8
-        :title="resumeMatchedI18n.workingExperiencesTitle"
+        :title="$t('workingExperiences')"
       >
         <div pl-10>
           <WorkingExperiences>
@@ -47,7 +44,7 @@ import {
             </div>
             <div>
               <b>
-                {{ resumeMatchedI18n.responsibilitiesTitle }}
+                {{ $t('responsibilities') }}
               </b>
             </div>
             <ul
@@ -62,7 +59,7 @@ import {
             </ul>
             <div>
               <b>
-                {{ resumeMatchedI18n.achievementsTitle }}
+                {{ $t('achievements') }}
               </b>
             </div>
             <ul
@@ -79,7 +76,7 @@ import {
         </div>
       </Section>
       <Section
-        :title="resumeMatchedI18n.educationExperienceTitle"
+        :title="$t('educationExperiences')"
         mt-8
       >
         <div pl-10>
@@ -118,7 +115,7 @@ import {
         </div>
       </Section>
       <Section
-        :title="resumeMatchedI18n.galleryTitle"
+        :title="$t('gallery')"
         mt-8
       >
         <ul m-0>

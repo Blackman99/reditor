@@ -8,6 +8,14 @@ export interface Translation {
   addItem: string
   insertAfter: string
   insertBefore: string
+  careerObjective: string
+  personalAdvantages: string
+  semi: string
+  workingExperiences: string
+  educationExperiences: string
+  gallery: string
+  responsibilities: string
+  achievements: string
 }
 
 type Translations = {
@@ -23,6 +31,14 @@ const translations: Translations = {
     addItem: 'Add item',
     insertAfter: 'Insert after',
     insertBefore: 'Insert before',
+    personalAdvantages: 'Personal Advantages',
+    careerObjective: 'Career Objective',
+    semi: ': ',
+    workingExperiences: 'Working Experiences',
+    educationExperiences: 'Education Experiences',
+    gallery: 'Gallery',
+    responsibilities: 'Responsibilities',
+    achievements: 'Achievements',
   },
   'zh-CN': {
     delete: '删除',
@@ -32,6 +48,14 @@ const translations: Translations = {
     addItem: '添加项',
     insertAfter: '插入新项目到当前项目之后',
     insertBefore: '插入新项目到当前项目之前',
+    personalAdvantages: '个人优势',
+    careerObjective: '期望职位',
+    semi: '：',
+    workingExperiences: '工作经历',
+    educationExperiences: '教育经历',
+    gallery: '作品展示',
+    responsibilities: '职责',
+    achievements: '成果',
   },
 }
 

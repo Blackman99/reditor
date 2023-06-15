@@ -1,13 +1,9 @@
-<script lang="ts" setup>
-import { birthday, careerObjective, email, gender, location, name, phone, resumeMatchedI18n } from '@/store'
-</script>
-
 <template>
   <div
     text-8
     leading-16
   >
-    <editable-span v-model="name" />
+    <Name />
   </div>
   <div
     text-gray-6
@@ -15,8 +11,8 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
     leading-8
   >
     <div>
-      {{ resumeMatchedI18n.careerObjectiveTitle }}:
-      <editable-span v-model="careerObjective" />
+      {{ $t('careerObjective') }}{{ $t('semi') }}
+      <CareerObjective />
     </div>
     <div
       flex
@@ -32,7 +28,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
           text-6
           mr-1
         />
-        <editable-span v-model="gender" />
+        <Gender />
       </div>
       <div
         h-3
@@ -48,7 +44,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
           text-6
           mr-1
         />
-        <editable-span v-model="birthday" />
+        <Birthday />
       </div>
       <div
         h-3
@@ -64,7 +60,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
           text-6
           mr-1
         />
-        <editable-span v-model="location" />
+        <Location />
       </div>
       <div
         h-3
@@ -80,7 +76,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
           text-6
           mr-1
         />
-        <editable-span v-model="phone" />
+        <Phone />
       </div>
       <div
         h-3
@@ -96,7 +92,7 @@ import { birthday, careerObjective, email, gender, location, name, phone, resume
           text-6
           mr-1
         />
-        <editable-span v-model="email" />
+        <Email />
       </div>
     </div>
   </div>
