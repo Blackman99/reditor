@@ -11,10 +11,10 @@ async function downloadPDF() {
   window.scrollTo({
     top: 0,
   })
-  window
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    .html2pdf()
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  const html2pdf = (await import('html2pdf.js')).default
+  html2pdf()
     .set({
       margin: 0,
       image: {
