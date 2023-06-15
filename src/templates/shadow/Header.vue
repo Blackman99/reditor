@@ -1,10 +1,5 @@
 <script lang="ts" setup>
-import { birthday, careerObjective, email, gender, location, name, phone, resumeMatchedI18n } from '@/store'
-import Gender from '@/icons/Gender.vue'
-import Birthday from '@/icons/Birthday.vue'
-import Location from '@/icons/Location.vue'
-import Phone from '@/icons/Phone.vue'
-import Email from '@/icons/Email.vue'
+import { birthday, email, location, phone, resumeMatchedI18n } from '@/store'
 </script>
 
 <template>
@@ -13,7 +8,7 @@ import Email from '@/icons/Email.vue'
       text-8
       leading-16
     >
-      <editable-span v-model="name" />
+      <Name />
     </div>
     <div
       text-4
@@ -21,7 +16,7 @@ import Email from '@/icons/Email.vue'
     >
       <div>
         {{ resumeMatchedI18n.careerObjectiveTitle }}:
-        <editable-span v-model="careerObjective" />
+        <CareerObjective />
       </div>
       <div
         flex
@@ -33,11 +28,11 @@ import Email from '@/icons/Email.vue'
           items-center
           px-4
         >
-          <Gender
+          <IconGender
             text-6
             mr-1
           />
-          <editable-span v-model="gender" />
+          <Gender />
         </div>
         <div
           h-3
@@ -49,7 +44,7 @@ import Email from '@/icons/Email.vue'
           items-center
           px-4
         >
-          <Birthday
+          <IconBirthday
             text-6
             mr-1
           />
@@ -65,7 +60,7 @@ import Email from '@/icons/Email.vue'
           items-center
           px-4
         >
-          <Location
+          <IconLocation
             text-6
             mr-1
           />
@@ -81,7 +76,7 @@ import Email from '@/icons/Email.vue'
           items-center
           px-4
         >
-          <Phone
+          <IconPhone
             text-6
             mr-1
           />
@@ -97,7 +92,7 @@ import Email from '@/icons/Email.vue'
           items-center
           px-4
         >
-          <Email
+          <IconEmail
             text-6
             mr-1
           />

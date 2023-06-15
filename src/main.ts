@@ -3,8 +3,6 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { Quasar } from 'quasar'
 import Page from './templates/index.vue'
-import EditableSpan from './components/EditableSpan.vue'
-import Operable from './components/Operable.vue'
 import App from './App.vue'
 import { locale } from '@/store'
 import 'quasar/src/css/index.sass'
@@ -43,8 +41,6 @@ app
       //
     },
   })
-  .component('EditableSpan', EditableSpan)
-  .component('Operable', Operable)
 
 app.config.globalProperties.$t = t
 

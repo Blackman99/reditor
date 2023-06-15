@@ -18,16 +18,15 @@ export default defineConfig({
     },
   },
   plugins: [
-    Components(),
+    Components({
+      directoryAsNamespace: true,
+    }),
     AutoImport({
       include: [
         /\.vue$/, /\.vue\?vue/,
       ],
       imports: [
         'vue',
-      ],
-      dirs: [
-        './src/components',
       ],
     }),
     Unocss({
