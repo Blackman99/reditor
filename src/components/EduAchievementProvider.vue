@@ -7,8 +7,6 @@ export interface EduAchContext {
 </script>
 
 <script setup lang="ts">
-import { provide } from 'vue'
-
 const context = defineProps<EduAchContext>()
 
 provide(eduAchContextKey, context)

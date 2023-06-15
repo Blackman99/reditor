@@ -4,6 +4,8 @@ import Unocss from 'unocss/vite'
 import { presetAttributify, presetIcons, presetUno, transformerDirectives } from 'unocss'
 import vue from '@vitejs/plugin-vue'
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 
 export default defineConfig({
   base: '',
@@ -16,6 +18,18 @@ export default defineConfig({
     },
   },
   plugins: [
+    Components(),
+    AutoImport({
+      include: [
+        /\.vue$/, /\.vue\?vue/,
+      ],
+      imports: [
+        'vue',
+      ],
+      dirs: [
+        './src/components',
+      ],
+    }),
     Unocss({
       rules: [
         [

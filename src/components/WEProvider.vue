@@ -7,8 +7,6 @@ export interface WeContext {
 </script>
 
 <script setup lang="ts">
-import { provide } from 'vue'
-
 const weContext = defineProps<WeContext>()
 provide(weContextKey, weContext)
 </script>

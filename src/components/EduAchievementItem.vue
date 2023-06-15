@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { inject } from 'vue'
 import { type EduContext, eduContextKey } from './EducationsProvider.vue'
 import { type EduAchContext, eduAchContextKey } from './EduAchievementProvider.vue'
 import {

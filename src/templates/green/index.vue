@@ -1,26 +1,9 @@
 <script setup lang="ts">
 import Header from './Header.vue'
 import Section from './Section.vue'
-import WorkingExperiences from '@/components/WorkingExperiences.vue'
-import CompanyName from '@/components/CompanyName.vue'
-import JobTitle from '@/components/JobTitle.vue'
-import Responsibilities from '@/components/Responsibilities.vue'
-import Achievements from '@/components/Achievements.vue'
-import AchievementItem from '@/components/AchievementItem.vue'
-import Educations from '@/components/Educations.vue'
-import InstitutionName from '@/components/InstitutionName.vue'
-import Major from '@/components/Major.vue'
-import EducationDuration from '@/components/EducationDuration.vue'
-import EduAchievements from '@/components/EduAchievements.vue'
-import EduAchievementItem from '@/components/EduAchievementItem.vue'
 import {
-  resumeMatchedI18n, updateGallery,
+  resumeMatchedI18n,
 } from '@/store'
-import { createMenus as createGalleryMenus } from '@/store/gallery'
-import WorkingDuration from '@/components/WorkingDuration.vue'
-import ResponsibilityItem from '@/components/ResponsibilityItem.vue'
-import Advantages from '@/components/Advantages.vue'
-import AdvantagesItem from '@/components/AdvantagesItem.vue'
 </script>
 
 <template>
@@ -139,14 +122,11 @@ import AdvantagesItem from '@/components/AdvantagesItem.vue'
         mt-8
       >
         <ul m-0>
-          <li
-            v-for="(ga, gaIdx) in resumeMatchedI18n.galleryItems"
-            :key="gaIdx"
-          >
-            <Operable :menus="createGalleryMenus(gaIdx)">
-              <editable-span :model-value="ga" @update:model-value="(newGa: string) => updateGallery(gaIdx, newGa)" />
-            </Operable>
-          </li>
+          <Galleries>
+            <li>
+              <GalleryItem />
+            </li>
+          </Galleries>
         </ul>
       </Section>
     </div>

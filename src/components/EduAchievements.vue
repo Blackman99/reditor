@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { inject } from 'vue'
 import { type EduContext, eduContextKey } from './EducationsProvider.vue'
 import EduAchievementProvider from './EduAchievementProvider.vue'
 import { createMenus } from '@/store/education-experience/achievement'

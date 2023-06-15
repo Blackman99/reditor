@@ -7,8 +7,6 @@ export interface AdvantagesContext {
 </script>
 
 <script setup lang="ts">
-import { provide } from 'vue'
-
 const context = defineProps<AdvantagesContext>()
 provide(adContextKey, context)
 </script>

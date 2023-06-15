@@ -8,8 +8,6 @@ export interface EduContext {
 </script>
 
 <script setup lang="ts">
-import { provide } from 'vue'
-
 const context = defineProps<EduContext>()
 
 provide(eduContextKey, context)

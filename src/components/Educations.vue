@@ -16,7 +16,3 @@ import { createMenus } from '@/store/education-experience'
     </EducationProvider>
   </Operable>
 </template>
-
-<style lang="scss" scoped>
-
-</style>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { inject } from 'vue'
 import { type WeContext, weContextKey } from './WEProvider.vue'
 import { updateJobTitle } from '@/store/working-experience'
 
@@ -13,5 +12,7 @@ function handleUpdate(next: string) {
 </script>
 
 <template>
-  <editable-span :model-value="weContext?.we.jobTitle" @update:model-value="handleUpdate" />
+  <editable-span
+    :model-value="weContext?.we.jobTitle" @update:model-value="handleUpdate"
+  />
 </template>

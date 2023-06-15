@@ -7,8 +7,6 @@ export interface ReContext {
 </script>
 
 <script setup lang="ts">
-import { provide } from 'vue'
-
 const reContext = defineProps<ReContext>()
 
 provide(reContextKey, reContext)

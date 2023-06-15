@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { inject } from 'vue'
 import { type WeContext, weContextKey } from './WEProvider.vue'
 import { type AchContext, achContextKey } from './AchievementsProvider.vue'
 import { updateResponsibility } from '@/store/working-experience/responsibility'

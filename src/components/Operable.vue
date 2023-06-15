@@ -8,8 +8,6 @@ export interface Item {
 </script>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
 defineProps<{
   menus: Array<Item>
 }>()

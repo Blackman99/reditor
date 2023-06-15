@@ -7,8 +7,6 @@ export interface AchContext {
 </script>
 
 <script setup lang="ts">
-import { provide } from 'vue'
-
 const reContext = defineProps<AchContext>()
 
 provide(achContextKey, reContext)

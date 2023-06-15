@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { inject } from 'vue'
 import { type AdvantagesContext, adContextKey } from './AdvantagesProvider.vue'
 import { updatePersonalAdvantage } from '@/store/personal-advantages'
 
