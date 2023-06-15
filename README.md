@@ -2,8 +2,8 @@
 
 ## Introduction
 
-Make charged the resume templates that I encountered become free  
-And with a quick online editor to write your resume in minutes  
+Make all the charged resume templates that I encountered become free  
+And provide a quick online editor to write your resume in minutes  
 
 ## Features
 
