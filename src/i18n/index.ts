@@ -16,6 +16,8 @@ export interface Translation {
   gallery: string
   responsibilities: string
   achievements: string
+  siteHelp: string
+  tips: string
 }
 
 type Translations = {
@@ -39,6 +41,8 @@ const translations: Translations = {
     gallery: 'Gallery',
     responsibilities: 'Responsibilities',
     achievements: 'Achievements',
+    siteHelp: 'Left click on the text you want to edit to open popup editor. Right click on the section to open context menu',
+    tips: 'TIP',
   },
   'zh-CN': {
     delete: '删除',
@@ -56,6 +60,8 @@ const translations: Translations = {
     gallery: '作品展示',
     responsibilities: '职责',
     achievements: '成果',
+    siteHelp: '在你想编辑的文字上左键点击呼出弹出式编辑框，在模块上右键呼出右键菜单',
+    tips: '提示',
   },
 }
 

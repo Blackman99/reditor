@@ -111,7 +111,17 @@ async function downloadPDF() {
     fixed
     bottom-4
     right-4
+    class="w-10vw"
   >
+    <div b-1 b-gray-4 b-solid mb-8 rounded-2 p-2 text-warm-gray-8>
+      <div text-green-5 flex items-center gap-2>
+        <div text-6 flex-shrink-0 i-material-symbols-help-center-rounded />
+        <div>
+          {{ $t('tips') }}
+        </div>
+      </div>
+      {{ $t('siteHelp') }}
+    </div>
     <button
       inline-flex
       items-center
