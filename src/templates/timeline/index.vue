@@ -3,10 +3,6 @@ import HeaderInfo from './HeaderInfo.vue'
 import SectionTitle from './SectionTitle.vue'
 import TimelineList from './TimelineList.vue'
 
-import Person from '@/icons/Person.vue'
-import Briefcase from '@/icons/Briefcase.vue'
-import Education from '@/icons/Education.vue'
-import Gallery from '@/icons/Gallery.vue'
 import WorkingExperiences from '@/components/WorkingExperiences.vue'
 import Responsibilities from '@/components/Responsibilities.vue'
 import ResponsibilityItem from '@/components/ResponsibilityItem.vue'
@@ -28,7 +24,7 @@ import GalleryItem from '@/components/GalleryItem.vue'
       mt-8
     >
       <template #icon>
-        <Person />
+        <IconPerson />
       </template>
     </SectionTitle>
     <ul
@@ -45,7 +41,7 @@ import GalleryItem from '@/components/GalleryItem.vue'
     <!-- Working Experiences -->
     <SectionTitle :title="$t('workingExperiences')">
       <template #icon>
-        <Briefcase />
+        <IconBriefcase />
       </template>
     </SectionTitle>
     <TimelineList
@@ -71,7 +67,7 @@ import GalleryItem from '@/components/GalleryItem.vue'
     </TimelineList>
     <SectionTitle :title="$t('educationExperiences')">
       <template #icon>
-        <Education />
+        <IconEducation />
       </template>
     </SectionTitle>
     <TimelineList :list-component="Educations">
@@ -89,7 +85,7 @@ import GalleryItem from '@/components/GalleryItem.vue'
     <!-- Gallery -->
     <SectionTitle :title="$t('gallery')">
       <template #icon>
-        <Gallery />
+        <IconGallery />
       </template>
     </SectionTitle>
     <List :list-component="Galleries" :item-component="GalleryItem" />
