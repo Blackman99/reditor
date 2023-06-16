@@ -9,7 +9,6 @@ import Components from 'unplugin-vue-components/vite'
 import { QuasarResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
-  base: '',
   server: {
     host: '0.0.0.0',
   },
