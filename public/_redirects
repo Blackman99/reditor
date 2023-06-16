@@ -1,1 +1,4 @@
-/* /index.html 200
+/en/* /index.html 200
+/zh-CN/* /index.html 200
+
+/* /en/simple 301!
