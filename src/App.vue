@@ -52,6 +52,7 @@ watch(() => themeColor.value, (newVal = '') => {
   >
     <QList class="h-full">
       <QExpansionItem
+        header-class="bg-gray-2"
         default-opened
       >
         <template #header>
@@ -79,6 +80,7 @@ watch(() => themeColor.value, (newVal = '') => {
         </QList>
       </QExpansionItem>
       <QExpansionItem
+        header-class="bg-gray-2"
         default-opened
       >
         <template #header>
@@ -135,6 +137,7 @@ watch(() => themeColor.value, (newVal = '') => {
         </QItemSection>
       </QItem>
       <QExpansionItem
+        header-class="bg-gray-2"
         default-opened
       >
         <template #header>
