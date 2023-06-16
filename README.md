@@ -7,10 +7,10 @@ And provide a quick online editor to write your resume in minutes
 
 ## Features
 
-- Popup editor for all resume templates
-- CRUD for section infos
+- Oline WYSIWYG resume editor
 - I18n (English/Chinese)
 - Templates Switcher
+- JSON data upload/download
 - Export PDF
 
 [Online Editor](https://resume-helper.netlify.app/)
