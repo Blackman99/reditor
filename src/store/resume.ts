@@ -1,4 +1,5 @@
 import { reactive, watch } from 'vue'
+import { I18n } from '@/types'
 
 const RESUME_KEY = 'RESUME_TEMPLATES'
 
@@ -7,7 +8,7 @@ const storageResume = localStorage.getItem(RESUME_KEY)
 const resume = reactive<Resume>(storageResume
   ? JSON.parse(storageResume)
   : {
-      'en': {
+      [I18n.EN]: {
         profile: {
           name: 'Your name',
           careerObjective: 'Front-end/Fullstack Development Engineer',
@@ -99,7 +100,7 @@ const resume = reactive<Resume>(storageResume
           },
         },
       },
-      'zh-CN': {
+      [I18n.ZH_CN]: {
         themeConfig: {
           simple: {
             sectionTitleWidth: '100px',

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getCssVar, setCssVar } from 'quasar'
+import type { I18n, Templates } from './types'
 import { locale, resumeMatchedI18n, templateName } from '@/store'
 import resumeConfig from '@/store/resume'
 import { languages } from '@/i18n'
@@ -23,6 +25,12 @@ async function downloadPDF() {
       },
     }).from(document.getElementById('resume-container')).save('resume')
 }
+
+const themeColor = ref(getCssVar('primary'))
+
+watch(() => themeColor.value, (newVal = '') => {
+  setCssVar('primary', newVal)
+})
 </script>
 
 <template>
@@ -99,6 +107,18 @@ async function downloadPDF() {
           </QItem>
         </QList>
       </QExpansionItem>
+      <QSeparator />
+      <QItem clickable class="text-primary">
+        <QPopupProxy>
+          <QColor v-model="themeColor" default-view="palette" flat />
+        </QPopupProxy>
+        <QItemSection avatar>
+          <div i-icon-park-outline-platte text-6 />
+        </QItemSection>
+        <QItemSection>
+          {{ $t('pickColor') }}
+        </QItemSection>
+      </QItem>
       <QSeparator />
       <QItem href="https://github.com/Blackman99/resume-templates" target="_blank">
         <QItemSection avatar>

@@ -23,6 +23,7 @@ const router = createRouter({
   history: createWebHistory(),
 })
 
+// ensure legal locale and template
 router.beforeEach((to) => {
   const paths = to.path.split('/')
   if (paths.length < 3)

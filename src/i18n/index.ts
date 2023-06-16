@@ -22,6 +22,7 @@ export interface Translation {
   siteHelp2: string
   dismiss: string
   help: string
+  pickColor: string
 }
 
 type Translations = {
@@ -50,6 +51,7 @@ const translations: Translations = {
     tips: 'TIP',
     help: 'How to use',
     dismiss: 'Dismiss',
+    pickColor: 'Pick color',
   },
   [I18n.ZH_CN]: {
     delete: '删除',
@@ -72,6 +74,7 @@ const translations: Translations = {
     tips: '提示',
     dismiss: '我知道了',
     help: '怎样使用',
+    pickColor: '选择主题色',
   },
 }
 
