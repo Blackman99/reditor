@@ -29,6 +29,8 @@ async function downloadPDF() {
 const themeColor = ref(getCssVar('primary'))
 
 watch(() => themeColor.value, (newVal = '') => {
+  if (!newVal)
+    return
   setCssVar('primary', newVal)
 })
 </script>
@@ -50,8 +52,6 @@ watch(() => themeColor.value, (newVal = '') => {
   >
     <QList class="h-full">
       <QExpansionItem
-        header-class="bg-primary text-white"
-        expand-icon-class="text-white"
         default-opened
       >
         <template #header>
@@ -79,8 +79,6 @@ watch(() => themeColor.value, (newVal = '') => {
         </QList>
       </QExpansionItem>
       <QExpansionItem
-        header-class="bg-primary text-white"
-        expand-icon-class="text-white"
         default-opened
       >
         <template #header>
@@ -108,7 +106,7 @@ watch(() => themeColor.value, (newVal = '') => {
         </QList>
       </QExpansionItem>
       <QSeparator />
-      <QItem clickable class="text-primary">
+      <QItem clickable>
         <QPopupProxy>
           <QColor v-model="themeColor" default-view="palette" flat />
         </QPopupProxy>
@@ -117,6 +115,14 @@ watch(() => themeColor.value, (newVal = '') => {
         </QItemSection>
         <QItemSection>
           {{ $t('pickColor') }}
+        </QItemSection>
+      </QItem>
+      <QItem clickable @click="downloadPDF">
+        <QItemSection avatar>
+          <div i-fontisto-export text-6 />
+        </QItemSection>
+        <QItemSection>
+          {{ $t('downloadPDF') }}
         </QItemSection>
       </QItem>
       <QSeparator />
@@ -162,20 +168,5 @@ watch(() => themeColor.value, (newVal = '') => {
         </QList>
       </QExpansionItem>
     </QList>
-  </div>
-  <div
-    fixed
-    bottom-4
-    right-4
-  >
-    <q-btn color="primary" unelevated @click="downloadPDF">
-      <div
-        i-fontisto-export
-        text-5
-      />
-      <div ml-2>
-        {{ $t('downloadPDF') }}
-      </div>
-    </q-btn>
   </div>
 </template>
