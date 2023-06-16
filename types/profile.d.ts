@@ -9,8 +9,6 @@ interface Profile {
   email: string
 }
 
-type ProfileKeys = keyof Profile
-
 interface ResumeItem {
   profile: Profile
   personalAdvantages: string[]
