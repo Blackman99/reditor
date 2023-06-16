@@ -70,7 +70,7 @@ defineEmits<{
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background-color: #60a5fa;
+  background-color: var(--q-primary);
 }
 
 .experience-item::after {

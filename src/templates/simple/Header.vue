@@ -4,7 +4,7 @@ import Divider from './Divider.vue'
 
 <template>
   <div
-    bg-007b86
+    class="bg-primary"
     text-white
     p-8
     mx--4

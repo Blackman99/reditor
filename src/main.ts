@@ -14,7 +14,7 @@ const routes = [
     path: '/:locale/:template',
     component: Page,
   },
-  { path: '/:pathMatch(.*)*', redirect: '/en/green' },
+  { path: '/:pathMatch(.*)*', redirect: '/en/simple' },
 ]
 
 const router = createRouter({
@@ -34,6 +34,7 @@ const app = createApp(App)
 
 const templates = import.meta.glob('./templates/*/index.vue', { eager: true })
 
+// register src/templates/foo/index.vue to <Foo /> component
 Object.entries(templates).forEach(([path, templateComponent]) => {
   let name = path.split('/')[2]
   name = name.slice(0, 1).toUpperCase() + name.slice(1)
@@ -49,6 +50,7 @@ app
     },
   })
 
+// global translation injection with TS type tips
 app.config.globalProperties.$t = t
 
 app.mount('#app')

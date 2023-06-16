@@ -94,14 +94,14 @@ const resume = reactive<Resume>(storageResume
           },
         ],
         themeConfig: {
-          green: {
+          simple: {
             sectionTitleWidth: '160px',
           },
         },
       },
       'zh-CN': {
         themeConfig: {
-          green: {
+          simple: {
             sectionTitleWidth: '100px',
           },
         },

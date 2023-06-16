@@ -11,7 +11,7 @@ defineProps<{
     class="section-title"
   >
     <div
-      text-blue-4
+      class="text-primary"
       text-6
     >
       <slot name="icon" />

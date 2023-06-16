@@ -37,7 +37,7 @@ defineProps<{
   position: relative;
   background: linear-gradient(
     75deg,
-    #007b86 var(--section-title-width),
+    var(--q-primary) var(--section-title-width),
     transparent var(--section-title-width)
   );
 }

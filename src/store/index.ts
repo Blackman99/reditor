@@ -5,7 +5,7 @@ export const locale = ref<I18n>('en')
 
 export const resumeMatchedI18n = computed<ResumeItem>(() => resume[locale.value])
 
-export const templateName = ref<Templates>('green')
+export const templateName = ref<Templates>('simple')
 
 export const templateConfig = computed(
   () => resumeMatchedI18n.value.themeConfig[templateName.value],

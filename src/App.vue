@@ -31,12 +31,16 @@ async function downloadPDF() {
     fixed
     top-0
     right-0
+    bottom-0
     flex
     flex-col
     gap-4
-    w-10vw
+    b-l-1
+    b-l-solid
+    b-l-light-8
+    class="w-10vw min-w-[280px] max-w-[480px]"
   >
-    <QList>
+    <QList class="h-full">
       <QExpansionItem
         header-class="bg-primary text-white"
         expand-icon-class="text-white"
@@ -95,6 +99,7 @@ async function downloadPDF() {
           </QItem>
         </QList>
       </QExpansionItem>
+      <QSeparator />
       <QItem href="https://github.com/Blackman99/resume-templates" target="_blank">
         <QItemSection avatar>
           <div text-8 i-mdi-github />
@@ -103,23 +108,46 @@ async function downloadPDF() {
           Star/Fork
         </QItemSection>
       </QItem>
+      <QExpansionItem
+        default-opened
+      >
+        <template #header>
+          <QItemSection avatar>
+            <div
+              text-6
+              i-material-symbols-contact-support-outline-rounded
+            />
+          </QItemSection>
+          <QItemSection>
+            {{ $t('help') }}
+          </QItemSection>
+        </template>
+        <QList>
+          <QItem>
+            <QItemSection avatar>
+              <div i-mdi-playlist-edit text-6 class="text-primary" />
+            </QItemSection>
+            <QItemSection>
+              {{ $t('siteHelp') }}
+            </QItemSection>
+          </QItem>
+          <QItem>
+            <QItemSection avatar>
+              <div i-mdi-button-cursor text-6 class="text-primary" />
+            </QItemSection>
+            <QItemSection>
+              {{ $t('siteHelp2') }}
+            </QItemSection>
+          </QItem>
+        </QList>
+      </QExpansionItem>
     </QList>
   </div>
   <div
     fixed
     bottom-4
     right-4
-    class="w-10vw"
   >
-    <div b-1 b-gray-4 b-solid mb-8 rounded-2 p-2 text-warm-gray-8>
-      <div text-green-5 flex items-center gap-2>
-        <div text-6 flex-shrink-0 i-material-symbols-help-center-rounded />
-        <div>
-          {{ $t('tips') }}
-        </div>
-      </div>
-      {{ $t('siteHelp') }}
-    </div>
     <q-btn color="primary" unelevated @click="downloadPDF">
       <div
         i-fontisto-export

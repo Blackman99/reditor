@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SectionBg from './SectionBg.vue'
+
 defineProps<{
   title: string
 }>()
@@ -7,21 +9,41 @@ defineProps<{
 <template>
   <div>
     <div
-      class="title--wrapper"
+      class="text-primary"
       relative
     >
+      <SectionBg />
+      <div
+        absolute
+        left-16px
+        top-0
+        bottom-0
+        opacity-60
+      >
+        <SectionBg />
+      </div>
+      <div
+        absolute
+        left-32px
+        top-0
+        bottom-0
+        opacity-30
+      >
+        <SectionBg />
+      </div>
       <div
         text-white
-        class="title"
         leading-8
         px-4
         rounded-tl-2
         inline-block
-        bg-007b86
-        relative
+        absolute
+        left-0
+        z-5
+        top-0
+        bottom-0
       >
         {{ title }}
-        <img class="title--decorator" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAhCAMAAABJPc3aAAABpFBMVEUAAAAAAAAAgIAAZmYAmZkAgIAAkpIAgIAAcY4Ai4sAgIAAdokAiIgAgI8AeIcAgIAAgI4AeYYAeYYAgIsAgIoAhIQAgIkAe4wAgIcAfIMAfIMAeIcAfIkAeYYAgIYAfYgAeoUAfYgAgIUAfYgAeoUAgIUAfYcAgIUAgIoAfYcAe4QAe4kAgIkAe4QAeYYAfYYAe4gAe4QAfYYAe4QAe4gAfIMAfoUAfIcAeoUAfIcAeoUAfIcAeoUAeYYAeYYAfIYAeYMAeYYAe4QAe4QAe4cAfYUAeYQAe4QAfIMAfIYAfIMAe4UAeYMAfIYAe4QAeYMAeYYAe4QAe4QAeoMAfIUAe4QAeoUAe4QAeoMAeoMAfIUAeoUAe4QAe4QAe4YAe4QAe4QAe4QAfIUAe4QAe4QAeoUAe4QAe4YAeoUAe4YAe4UAeoUAfIUAe4QAe4YAe4YAe4UAe4QAe4UAe4YAeoYAe4UAe4UAe4YAe4UAeoYAfIYAe4YAe4YAe4UAe4cAe4YAeoYAe4YAe4UAe4UAe4UAeoYAe4YAe4YAe4YAe4YAe4cAe4bEwSQuAAAAi3RSTlMAAQQFBQYHCAkLDA0PEBESEhMVFhgbHB8gISMkJyoqKywtLi8wMDEyMjM0NDQ4OTk6PD0+PkBBQkVGR0hJTE5QVFRVWVlaXV1hYWVmZ2doaWlqbG1tbm9wcXNze3x+foGFh4iJi46Rk5SanZ+hoqSqrrW8v8jJy9HT3eXm6Ovr7O7u8fX3+Pn6+/3+VHugMgAAAYZJREFUSMeN1dVWQlEUheEDFood2IqFYjd2YHcLdneDhdgYB+dLe4l73rjWA3zj33vs0KC/+7yHbldoFmZGnA57aGyFORazJhgAAF4vllzKTHWW2/9OQbJBSAH+XdVyjTYqlj3PJKWgn5C10KZatngpheAZWYvtqlWWIKXwvcddTdQVLaXwuEzWeKVq5RukFK6IcnWrlD1VTH2sEDVbpVLFRikFL2c5KcsipvQN3vla2vkIKYUbzuqnrAwxFdzmw1WvUqUmKYV7zhqirGwx9bPPVjNZMVIKPqaGicoRUzhiq4WsWDH14ObnhqhcMYVzzuogK0lMvfCtnqxQqQKDlMIlZ3VRVoqYCvx3q4uMUgrXnNVHWeli6ueYrVay4qQUApu8xDpaYqSUwvMqWRO0XVajlIJ/jayxavoXw6QUnra4i54ba5SUwucpWXP0L5YkSingbp2wwRoVywqXUvjy0GGd71V332YxCilAvz2gf2PAoWKZZiEF4M2zo2rTPQ3q7U4zaZqm/QKRAmTw2tNDqwAAAABJRU5ErkJggg==">
       </div>
     </div>
     <div
@@ -34,26 +56,4 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-.title {
-  &--wrapper {
-    &::after {
-      content: ' ';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(to right, #007b86, transparent);
-    }
-  }
-  &--decorator {
-    position: absolute;
-    top: 0;
-    left: calc(100% - 1px);
-    content: ' ';
-    bottom: 0;
-    z-index: 2;
-    height: 100%;
-  }
-}
 </style>
