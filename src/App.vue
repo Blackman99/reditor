@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import { getCssVar, setCssVar } from 'quasar'
-import type { I18n, Templates } from './types'
+import { Notify, exportFile, getCssVar, setCssVar } from 'quasar'
+import { I18n, type Templates } from './types'
 import { locale, resumeMatchedI18n, templateName } from '@/store'
-import resumeConfig from '@/store/resume'
-import { languages } from '@/i18n'
+import { languages, t } from '@/i18n'
+import resume, { DEFAULT_RESUME } from '@/store/resume'
 
 const templateNames = Object.keys(
   import.meta.glob('./templates/*/index.vue', { eager: true }),
 ).map(path => path.split('/')[2]) as Array<Templates>
 
+const exporting = ref(false)
+const fileInput = ref<HTMLInputElement>()
+
 async function downloadPDF() {
+  exporting.value = true
   window.scrollTo({
     top: 0,
   })
@@ -24,6 +28,63 @@ async function downloadPDF() {
         quality: 1,
       },
     }).from(document.getElementById('resume-container')).save('resume')
+
+  setTimeout(() => {
+    exporting.value = false
+  }, 1000)
+}
+
+function exportJson() {
+  exportFile('resume.json', JSON.stringify(resume), 'application/json')
+}
+
+function importJson() {
+  if (!fileInput.value)
+    return
+
+  fileInput.value.click()
+}
+
+function handleJsonUploaded(e: any) {
+  const [file] = e.target.files
+  if (!file)
+    return
+  const reader = new FileReader()
+  const showError = () => {
+    Notify.create({
+      message: t('uploadJsonError'),
+      color: 'negative',
+      actions: [
+        {
+          label: t('dismiss'),
+          color: 'white',
+        },
+      ],
+    })
+  }
+  reader.onload = (e) => {
+    try {
+      const jsonSource = e.target?.result?.toString() || JSON.stringify(DEFAULT_RESUME)
+      Object.assign(resume, JSON.parse(jsonSource))
+      Notify.create({
+        message: t('uploadJsonSuccess'),
+        color: 'primary',
+        timeout: 3000,
+        actions: [
+          {
+            label: t('dismiss'),
+            color: 'white',
+          },
+        ],
+      })
+    }
+    catch {
+      showError()
+    }
+  }
+  reader.onerror = showError
+  reader.readAsText(file, 'utf-8')
+  e.target.value = ''
 }
 
 const themeColor = ref(getCssVar('primary'))
@@ -36,6 +97,7 @@ watch(() => themeColor.value, (newVal = '') => {
 </script>
 
 <template>
+  <input ref="fileInput" type="file" accept="application/json" display-none @change="handleJsonUploaded">
   <router-view v-if="resumeMatchedI18n" />
   <div
     fixed
@@ -51,6 +113,44 @@ watch(() => themeColor.value, (newVal = '') => {
     class="w-10vw min-w-[280px] max-w-[480px]"
   >
     <QList class="h-full">
+      <QItem clickable>
+        <QPopupProxy>
+          <QColor v-model="themeColor" default-view="palette" flat />
+        </QPopupProxy>
+        <QItemSection avatar>
+          <div i-icon-park-outline-platte text-6 />
+        </QItemSection>
+        <QItemSection>
+          {{ $t('pickColor') }}
+        </QItemSection>
+      </QItem>
+      <QItem clickable @click="importJson">
+        <QItemSection avatar>
+          <div i-carbon-json-reference text-6 />
+        </QItemSection>
+        <QItemSection>
+          {{ $t('uploadJson') }}
+        </QItemSection>
+      </QItem>
+      <QItem clickable @click="exportJson">
+        <QItemSection avatar>
+          <div i-bi-filetype-json text-6 />
+        </QItemSection>
+        <QItemSection>
+          {{ $t('downloadJson') }}
+        </QItemSection>
+      </QItem>
+      <QItem clickable @click="downloadPDF">
+        <QInnerLoading :showing="exporting">
+          <QSpinnerPie color="primary" />
+        </QInnerLoading>
+        <QItemSection avatar>
+          <div i-fa6-solid-file-pdf text-6 />
+        </QItemSection>
+        <QItemSection>
+          {{ $t('downloadPDF') }}
+        </QItemSection>
+      </QItem>
       <QExpansionItem
         header-class="bg-gray-2"
         default-opened
@@ -69,7 +169,7 @@ watch(() => themeColor.value, (newVal = '') => {
         </template>
         <QList>
           <QItem
-            v-for="path in Object.keys(resumeConfig)"
+            v-for="path in Object.values(I18n)"
             :key="path"
             :to="`/${path}/${templateName}`"
           >
@@ -107,35 +207,6 @@ watch(() => themeColor.value, (newVal = '') => {
           </QItem>
         </QList>
       </QExpansionItem>
-      <QSeparator />
-      <QItem clickable>
-        <QPopupProxy>
-          <QColor v-model="themeColor" default-view="palette" flat />
-        </QPopupProxy>
-        <QItemSection avatar>
-          <div i-icon-park-outline-platte text-6 />
-        </QItemSection>
-        <QItemSection>
-          {{ $t('pickColor') }}
-        </QItemSection>
-      </QItem>
-      <QItem clickable @click="downloadPDF">
-        <QItemSection avatar>
-          <div i-fontisto-export text-6 />
-        </QItemSection>
-        <QItemSection>
-          {{ $t('downloadPDF') }}
-        </QItemSection>
-      </QItem>
-      <QSeparator />
-      <QItem href="https://github.com/Blackman99/resume-templates" target="_blank">
-        <QItemSection avatar>
-          <div text-8 i-mdi-github />
-        </QItemSection>
-        <QItemSection>
-          Star/Fork
-        </QItemSection>
-      </QItem>
       <QExpansionItem
         header-class="bg-gray-2"
         default-opened
@@ -170,6 +241,15 @@ watch(() => themeColor.value, (newVal = '') => {
           </QItem>
         </QList>
       </QExpansionItem>
+      <QSeparator />
+      <QItem href="https://github.com/Blackman99/resume-templates" target="_blank">
+        <QItemSection avatar>
+          <div text-8 i-mdi-github />
+        </QItemSection>
+        <QItemSection>
+          Star/Fork
+        </QItemSection>
+      </QItem>
     </QList>
   </div>
 </template>

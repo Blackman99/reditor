@@ -1,7 +1,7 @@
 import 'uno.css'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { Quasar } from 'quasar'
+import { Notify, Quasar } from 'quasar'
 import Page from './templates/index.vue'
 import App from './App.vue'
 import { I18n, Templates, isLegalI18n, isLegalTemplate } from './types'
@@ -54,7 +54,14 @@ app
   .use(router)
   .use(Quasar, {
     plugins: {
-      //
+      Notify,
+    },
+    config: {
+      notify: {
+        progress: true,
+        timeout: 3000,
+        position: 'top-left',
+      },
     },
   })
 

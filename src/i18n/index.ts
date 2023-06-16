@@ -23,6 +23,10 @@ export interface Translation {
   dismiss: string
   help: string
   pickColor: string
+  downloadJson: string
+  uploadJson: string
+  uploadJsonError: string
+  uploadJsonSuccess: string
 }
 
 type Translations = {
@@ -52,6 +56,10 @@ const translations: Translations = {
     help: 'How to use',
     dismiss: 'Dismiss',
     pickColor: 'Pick color',
+    downloadJson: 'Download JSON',
+    uploadJson: 'Upload JSON',
+    uploadJsonError: 'There\'s something wrong with the JSON file',
+    uploadJsonSuccess: ' Upload successfully, Information applied!',
   },
   [I18n.ZH_CN]: {
     delete: '删除',
@@ -72,9 +80,13 @@ const translations: Translations = {
     siteHelp: '在文字上左键点击呼出弹出式编辑框',
     siteHelp2: '在模块上右键呼出右键菜单以增减模块',
     tips: '提示',
-    dismiss: '我知道了',
+    dismiss: '关闭',
     help: '怎样使用',
     pickColor: '选择主题色',
+    downloadJson: '下载 JSON',
+    uploadJson: '上传 JSON',
+    uploadJsonError: '看起来 JSON 的上传解析出了意外错误',
+    uploadJsonSuccess: '上传成功，信息已录入',
   },
 }
 
