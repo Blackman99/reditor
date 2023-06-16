@@ -1,4 +1,5 @@
 import { locale } from '../store'
+import { I18n } from '@/types'
 
 export interface Translation {
   downloadPDF: string
@@ -24,11 +25,11 @@ export interface Translation {
 }
 
 type Translations = {
-  [key in I18n]: Translation
+  [k in I18n]: Translation
 }
 
 const translations: Translations = {
-  'en': {
+  [I18n.EN]: {
     delete: 'Delete',
     downloadPDF: 'Download PDF',
     themes: 'Themes',
@@ -50,7 +51,7 @@ const translations: Translations = {
     help: 'How to use',
     dismiss: 'Dismiss',
   },
-  'zh-CN': {
+  [I18n.ZH_CN]: {
     delete: '删除',
     downloadPDF: '下载 PDF',
     themes: '主题',
@@ -75,8 +76,8 @@ const translations: Translations = {
 }
 
 export const languages = {
-  'en': 'English',
-  'zh-CN': '简体中文',
+  [I18n.EN]: 'English',
+  [I18n.ZH_CN]: '简体中文',
 }
 
 export const t = (key: keyof Translation) => translations[locale.value][key]

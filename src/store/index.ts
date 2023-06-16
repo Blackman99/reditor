@@ -1,13 +1,17 @@
 import { computed, ref } from 'vue'
 import resume from './resume'
+import { I18n, Templates } from '@/types'
 
-export const locale = ref<I18n>('en')
+export const locale = ref<I18n>(I18n.EN)
 
 export const resumeMatchedI18n = computed<ResumeItem>(() => resume[locale.value])
 
-export const templateName = ref<Templates>('simple')
+export const templateName = ref<Templates>(Templates.Simple)
 
 export const templateConfig = computed(
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   () => resumeMatchedI18n.value.themeConfig[templateName.value],
 )
 

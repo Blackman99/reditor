@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { Quasar } from 'quasar'
 import Page from './templates/index.vue'
 import App from './App.vue'
+import { I18n, Templates, isLegalI18n, isLegalTemplate } from './types'
 import { locale, templateName } from '@/store'
 import 'quasar/src/css/index.sass'
 import '@quasar/extras/material-icons/material-icons.css'
@@ -23,11 +24,17 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  const paths = to.fullPath.split('/')
-  if (paths.length < 2)
-    return
-  locale.value = (paths[1] || '/') as I18n
-  templateName.value = (paths[2] || 'green') as Templates
+  const paths = to.path.split('/')
+  if (paths.length < 3)
+    return `/${I18n.EN}/${Templates.Simple}`
+
+  const [, nextLocale, nextTemplate] = paths
+
+  if (!isLegalI18n(nextLocale) || !isLegalTemplate(nextTemplate))
+    return `/${I18n.EN}/${Templates.Simple}`
+
+  locale.value = nextLocale as unknown as I18n
+  templateName.value = nextTemplate as unknown as Templates
 })
 
 const app = createApp(App)

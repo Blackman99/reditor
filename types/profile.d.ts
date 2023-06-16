@@ -1,8 +1,4 @@
-type I18n = 'en' | 'zh-CN'
-type ThemeConfigBase<T> = {
-  [key in I18n]: T
-}
-type Templates = 'timeline' | 'simple' | 'shadow'
+
 interface Profile {
   name: string
   careerObjective: string
@@ -14,14 +10,6 @@ interface Profile {
 }
 
 type ProfileKeys = keyof Profile
-
-interface GreenThemeConfig {
-  sectionTitleWidth: string
-}
-
-interface ShadowConfig {
-  sectionTitleWidth: string
-}
 
 interface ResumeItem {
   profile: Profile
@@ -36,9 +24,7 @@ interface ResumeItem {
   educationExperiences: EducationExperience[]
   educationExperienceTitle: string
   themeConfig: {
-    simple?: GreenThemeConfig
-    timeline?: {},
-    shadow?: ShadowConfig
+    [k: Templates]: any
   }
 }
 
