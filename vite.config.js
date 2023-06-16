@@ -6,6 +6,7 @@ import vue from '@vitejs/plugin-vue'
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { QuasarResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   base: '',
@@ -20,6 +21,9 @@ export default defineConfig({
   plugins: [
     Components({
       directoryAsNamespace: true,
+      resolvers: [
+        QuasarResolver(),
+      ],
     }),
     AutoImport({
       include: [

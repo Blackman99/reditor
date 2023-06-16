@@ -2,9 +2,6 @@
 import HeaderInfo from './HeaderInfo.vue'
 import SectionTitle from './SectionTitle.vue'
 import TimelineList from './TimelineList.vue'
-import {
-  resumeMatchedI18n,
-} from '@/store'
 
 import Person from '@/icons/Person.vue'
 import Briefcase from '@/icons/Briefcase.vue'
@@ -90,7 +87,7 @@ import GalleryItem from '@/components/GalleryItem.vue'
       <List :list-component="EduAchievements" :item-component="EduAchievementItem" />
     </TimelineList>
     <!-- Gallery -->
-    <SectionTitle :title="resumeMatchedI18n.galleryTitle">
+    <SectionTitle :title="$t('gallery')">
       <template #icon>
         <Gallery />
       </template>

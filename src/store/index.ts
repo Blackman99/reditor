@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue'
 import resume from './resume'
 
-export const locale = ref<I18n>('/')
+export const locale = ref<I18n>('en')
 
 export const resumeMatchedI18n = computed<ResumeItem>(() => resume[locale.value])
 

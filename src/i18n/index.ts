@@ -25,7 +25,7 @@ type Translations = {
 }
 
 const translations: Translations = {
-  '/': {
+  'en': {
     delete: 'Delete',
     downloadPDF: 'Download PDF',
     themes: 'Themes',
@@ -66,7 +66,7 @@ const translations: Translations = {
 }
 
 export const languages = {
-  '/': 'English',
+  'en': 'English',
   'zh-CN': '简体中文',
 }
 

@@ -7,7 +7,7 @@ const storageResume = localStorage.getItem(RESUME_KEY)
 const resume = reactive<Resume>(storageResume
   ? JSON.parse(storageResume)
   : {
-      '/': {
+      'en': {
         profile: {
           name: 'Your name',
           careerObjective: 'Front-end/Fullstack Development Engineer',
