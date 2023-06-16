@@ -7,9 +7,10 @@ And provide a quick online editor to write your resume in minutes
 
 ## Features
 
-- Oline WYSIWYG resume editor
+- Online WYSIWYG resume editor
 - I18n (English/Chinese)
 - Templates Switcher
+- Theme color picker
 - JSON data upload/download
 - Export PDF
 
