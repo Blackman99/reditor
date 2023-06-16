@@ -7,6 +7,7 @@ export enum Templates {
   Timeline = 'timeline',
   Simple = 'simple',
   Shadow = 'shadow',
+  Pink = 'pink',
 }
 
 const i18nValues = Object.values(I18n)
