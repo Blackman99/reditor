@@ -32,7 +32,7 @@ function focusTextarea() {
       }"
       @click="handleShow"
     >{{ modelValue || placeholder }}</pre>
-    <q-popup-proxy anchor="bottom right" @show="focusTextarea" @before-hide="showEditor = false">
+    <q-popup-proxy anchor="bottom left" @show="focusTextarea" @before-hide="showEditor = false">
       <div
         ref="editorDom"
         z-3
