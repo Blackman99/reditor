@@ -27,6 +27,7 @@ export interface Translation {
   uploadJson: string
   uploadJsonError: string
   uploadJsonSuccess: string
+  enterSomething: string
 }
 
 type Translations = {
@@ -60,6 +61,7 @@ const translations: Translations = {
     uploadJson: 'Upload JSON',
     uploadJsonError: 'There\'s something wrong with the JSON file',
     uploadJsonSuccess: ' Upload successfully, Information applied!',
+    enterSomething: 'Enter something',
   },
   [I18n.ZH_CN]: {
     delete: '删除',
@@ -87,6 +89,7 @@ const translations: Translations = {
     uploadJson: '上传 JSON',
     uploadJsonError: '看起来 JSON 的上传解析出了意外错误',
     uploadJsonSuccess: '上传成功，信息已录入',
+    enterSomething: '输入些内容',
   },
 }
 
