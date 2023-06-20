@@ -1,9 +1,7 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
   modelValue: string
-  placeholder?: string
 }>(), {
-  placeholder: 'Enter something',
 })
 const emit = defineEmits(['update:modelValue'])
 
@@ -31,7 +29,7 @@ function focusTextarea() {
         'text-blue-5': showEditor && modelValue,
       }"
       @click="handleShow"
-    >{{ modelValue || placeholder }}</pre>
+    >{{ modelValue || $t('enterSomething') }}</pre>
     <q-popup-proxy anchor="bottom left" @show="focusTextarea" @before-hide="showEditor = false">
       <div
         ref="editorDom"
@@ -44,7 +42,7 @@ function focusTextarea() {
         }"
         role="tooltip"
       >
-        <textarea :placeholder="placeholder" text-gray-2 bg-transparent w-full rows="5" :value="modelValue" @input="e => emit('update:modelValue', (e.target as HTMLTextAreaElement).value)" />
+        <textarea :placeholder="$t('enterSomething')" text-gray-2 bg-transparent w-full rows="5" :value="modelValue" @input="e => emit('update:modelValue', (e.target as HTMLTextAreaElement).value)" />
       </div>
     </q-popup-proxy>
   </div>
